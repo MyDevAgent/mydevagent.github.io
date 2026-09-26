@@ -1,22 +1,26 @@
 <!doctype html>
-<html lang="it">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MyDevAgent · il tuo team di agenti AI, sul tuo PC</title>
-<meta name="description" content="MyDevAgent: assistente di programmazione local-first con 35 agenti specializzati e Vio, il polpetto viola. Gira offline sul tuo PC con Ollama.">
-<meta property="og:title" content="MyDevAgent · 35 agenti AI sul tuo PC">
-<meta property="og:description" content="Legge il tuo progetto, scrive il codice, lancia i test e si corregge da solo. Gratis, open source, offline.">
+<title>MyDevAgent · your team of AI agents, on your PC</title>
+<meta name="description" content="MyDevAgent: a local-first coding assistant with 35 specialized agents and Vio, the little purple octopus. Runs offline on your PC with Ollama.">
+<meta property="og:title" content="MyDevAgent · 35 AI agents on your PC">
+<meta property="og:description" content="It reads your project, writes the code, runs the tests and fixes its own mistakes. Free, open source, offline.">
 <meta name="theme-color" content="#07040d">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="MyDevAgent">
-<meta property="og:url" content="https://mydevagent.github.io/">
+<meta property="og:url" content="https://mydevagent.github.io/en/">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="it_IT">
 <meta property="og:image" content="https://mydevagent.github.io/img/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Vio, il polpetto viola, e la scritta: Un team di 35 agenti AI sul tuo PC">
+<meta property="og:image:alt" content="Vio, the little purple octopus, and the words: Un team di 35 agenti AI sul tuo PC (A team of 35 AI agents on your PC)">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://mydevagent.github.io/">
+<link rel="canonical" href="https://mydevagent.github.io/en/">
+<link rel="alternate" hreflang="en" href="https://mydevagent.github.io/en/">
+<link rel="alternate" hreflang="it" href="https://mydevagent.github.io/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 8' shape-rendering='crispEdges'%3E%3Crect x='4' width='6' height='1' fill='%23581c87'/%3E%3Crect x='2' y='1' width='10' height='6' fill='%23a855f7'/%3E%3Crect x='4' y='3' width='2' height='2' fill='%231a0b2e'/%3E%3Crect x='8' y='3' width='2' height='2' fill='%231a0b2e'/%3E%3Crect x='1' y='7' width='12' height='1' fill='%23581c87'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,7 +63,7 @@
   .wrap { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
   svg.vio { display: block; overflow: visible; }
 
-  /* sfondo: stelle collegate + bagliori */
+  /* background: connected stars + glows */
   #sky { position: fixed; inset: 0; z-index: -1; width: 100%; height: 100%; pointer-events: none; }
   .bg { position: fixed; inset: 0; z-index: -2; overflow: hidden; pointer-events: none; }
   .blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: .4; animation: float 18s ease-in-out infinite; }
@@ -68,11 +72,11 @@
   .b3 { width: 380px; height: 380px; background: var(--purple-dd); bottom: -140px; left: 30%; animation-delay: -12s; }
   @keyframes float { 0%,100% { transform: translate(0,0) scale(1); } 33% { transform: translate(60px,40px) scale(1.1); } 66% { transform: translate(-40px,70px) scale(.95); } }
 
-  /* barra di avanzamento della pagina */
+  /* page progress bar */
   #prog { position: fixed; top: 0; left: 0; height: 3px; width: 100%; z-index: 30; transform-origin: 0 50%; transform: scaleX(0);
     background: linear-gradient(90deg, var(--purple-d), var(--pink)); }
 
-  /* barra in alto */
+  /* top bar */
   nav {
     position: sticky; top: 0; z-index: 10;
     backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); background: rgba(7,4,13,.6);
@@ -90,6 +94,9 @@
   nav ul a.on::after { transform: scaleX(1); }
   .gh { border: 1px solid var(--line); padding: 7px 14px; border-radius: 999px; font-size: 14px; transition: .25s; white-space: nowrap; }
   .gh:hover { border-color: var(--purple); box-shadow: 0 0 20px rgba(168,85,247,.35); }
+  .nav-r { display: flex; align-items: center; gap: 14px; }
+  .lang { font-size: 14px; color: var(--muted); white-space: nowrap; transition: color .2s; }
+  .lang:hover { color: var(--text); }
 
   /* hero */
   .hero { padding: 70px 0 40px; text-align: center; }
@@ -127,7 +134,7 @@
   .caret { display: inline-block; width: .5em; height: 1.05em; background: var(--purple); vertical-align: -.18em; margin-left: 2px; animation: pulse 1s steps(1) infinite; }
   .lead { max-width: 680px; margin: 16px auto 0; font-size: clamp(16px, 2.2vw, 19px); color: var(--muted); }
 
-  /* bottoni di download */
+  /* download buttons */
   .downloads { scroll-margin-top: 90px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 900px; margin: 40px auto 0; }
   .dl {
     position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 4px; text-align: left;
@@ -158,7 +165,7 @@
   .scroll-hint i::after { content: ""; position: absolute; left: 50%; top: 6px; width: 4px; height: 7px; margin-left: -2px; border-radius: 2px; background: var(--purple); animation: wheel 1.6s infinite; }
   @keyframes wheel { to { transform: translateY(10px); opacity: 0; } }
 
-  /* nastro dei comandi */
+  /* command ribbon */
   .marquee { border-block: 1px solid var(--line); background: rgba(15,10,26,.6); overflow: hidden; padding: 14px 0; margin-top: 30px;
     mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
   .track { display: flex; gap: 14px; width: max-content; animation: slide 40s linear infinite; }
@@ -167,7 +174,7 @@
   .track span b { color: var(--lilac); font-weight: 600; }
   @keyframes slide { to { transform: translateX(-50%); } }
 
-  /* sezioni */
+  /* sections */
   section { padding: 100px 0; scroll-margin-top: 50px; }
   .kicker { color: var(--purple); font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
   h2 { font-size: clamp(30px, 4.5vw, 48px); letter-spacing: -.03em; line-height: 1.1; margin: 10px 0 14px; }
@@ -176,7 +183,7 @@
   code, kbd { font-family: "JetBrains Mono", monospace; font-size: 13px; background: #1a1029; border: 1px solid var(--line); padding: 2px 7px; border-radius: 6px; color: var(--lilac); }
   kbd { border-bottom-width: 3px; }
 
-  /* ====== clip: Vio al lavoro ====== */
+  /* ====== clip: Vio at work ====== */
   .player { margin-top: 46px; border-radius: 22px; border: 1px solid var(--line); background: var(--panel); overflow: hidden;
     box-shadow: 0 40px 100px -30px rgba(126,34,206,.6); }
   .p-top { display: flex; align-items: center; gap: 7px; padding: 12px 16px; background: var(--panel2); border-bottom: 1px solid var(--line); font-size: 13px; color: var(--dim); }
@@ -206,7 +213,7 @@
   .chap.on { color: var(--text); }
   .chap:hover { color: var(--lilac); }
 
-  /* scena: chiedi */
+  /* scene: ask */
   .ask { height: 100%; display: flex; flex-direction: column; justify-content: center; gap: 18px; }
   .ask-hint { color: var(--dim); font-size: 13px; }
   .ask-box { font-size: clamp(15px, 2vw, 19px); padding: 18px 20px; border-radius: 14px; border: 1px solid var(--purple); background: #150c24;
@@ -218,7 +225,7 @@
   .sent { animation: sent .6s ease forwards; }
   @keyframes sent { to { transform: translateY(-30px); opacity: .0; } }
 
-  /* scena: legge */
+  /* scene: read */
   .read { display: grid; grid-template-columns: 1fr 1.25fr; gap: 22px; height: 100%; }
   .pane { border: 1px solid var(--line); border-radius: 12px; background: rgba(15,10,26,.8); padding: 14px; overflow: hidden; }
   .pane h4 { font-family: Inter, sans-serif; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); margin-bottom: 10px; }
@@ -234,7 +241,7 @@
   .scanbar { position: absolute; left: 26px; right: 26px; height: 2px; background: linear-gradient(90deg, transparent, var(--purple), transparent); top: 26px; animation: scanY 1.6s ease-in-out infinite; opacity: .6; }
   @keyframes scanY { 50% { top: calc(100% - 28px); } }
 
-  /* scena: team */
+  /* scene: team */
   .net { width: 100%; height: 100%; }
   .net .ln { stroke: var(--purple); stroke-width: 2; opacity: .5; transition: stroke-dashoffset .7s ease; }
   .net .fl { stroke: var(--lilac); stroke-width: 2.5; stroke-dasharray: 3 14; opacity: 0; transition: opacity .3s; animation: flow 1s linear infinite; }
@@ -251,7 +258,7 @@
   .net .halo { fill: none; stroke: var(--purple); opacity: .5; transform-box: fill-box; transform-origin: center; animation: halo 2s ease-out infinite; }
   @keyframes halo { from { transform: scale(1); opacity: .6; } to { transform: scale(1.7); opacity: 0; } }
 
-  /* scena: scrive */
+  /* scene: write */
   .ed { height: 100%; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: rgba(12,7,20,.9); display: flex; flex-direction: column; }
   .tabs { display: flex; background: var(--panel2); border-bottom: 1px solid var(--line); font-size: 12px; }
   .tabs span { padding: 8px 14px; color: var(--dim); border-right: 1px solid var(--line); transition: .3s; }
@@ -268,7 +275,7 @@
   .code .l.del::before { content: "-"; color: var(--red); }
   .k { color: #c084fc; } .s { color: #86efac; } .f { color: var(--cyan); } .n { color: #fbbf24; } .cm { color: var(--dim); }
 
-  /* scena: test */
+  /* scene: test */
   .tt { height: 100%; border: 1px solid var(--line); border-radius: 12px; background: rgba(12,7,20,.9); padding: 16px 18px; font-size: 13.5px; line-height: 1.75; overflow: hidden; }
   .tt div { white-space: pre-wrap; animation: sceneIn .3s ease both; }
   .tt .p { color: var(--purple); } .tt .ok { color: var(--green); } .tt .err { color: var(--red); } .tt .d { color: var(--dim); } .tt .c { color: var(--cyan); }
@@ -277,7 +284,7 @@
   .shake { animation: shake .45s ease; }
   @keyframes shake { 20%, 60% { transform: translateX(-6px); } 40%, 80% { transform: translateX(6px); } }
 
-  /* scena: fatto */
+  /* scene: done */
   .fin { height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 20px; text-align: center; }
   .fin h3 { font-family: Inter, sans-serif; font-size: clamp(26px, 4vw, 38px); letter-spacing: -.03em; }
   .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; width: 100%; max-width: 560px; }
@@ -291,7 +298,7 @@
   .conf { position: absolute; left: 50%; top: 45%; width: 8px; height: 8px; pointer-events: none; animation: conf 1.5s cubic-bezier(.1,.7,.3,1) forwards; }
   @keyframes conf { to { transform: translate(var(--x), var(--y)) rotate(var(--r)); opacity: 0; } }
 
-  /* ====== facce di Vio ====== */
+  /* ====== Vio's faces ====== */
   .faces { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: center; margin-top: 46px; }
   .face-big { text-align: center; padding: 40px 20px; border-radius: 26px; border: 1px solid var(--line);
     background: radial-gradient(ellipse at 50% 30%, rgba(168,85,247,.22), transparent 65%), var(--bg2); }
@@ -335,7 +342,7 @@
   .legend { display: flex; gap: 18px; justify-content: center; font-size: 13px; color: var(--muted); margin-top: 6px; }
   .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
 
-  /* ====== funzioni ====== */
+  /* ====== features ====== */
   .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 50px; }
   .stat { text-align: center; padding: 26px 10px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--card); }
   .stat b { display: block; font-size: 44px; font-weight: 800; letter-spacing: -.03em; color: var(--lilac); }
@@ -398,7 +405,7 @@
   .sw-chat .msg { padding: 8px 10px; border-radius: 10px; background: rgba(168,85,247,.14); border: 1px solid var(--line); color: var(--lilac); min-height: 52px; }
   .sw-chat .ctx { margin-top: auto; font-family: "JetBrains Mono", monospace; font-size: 10.5px; color: var(--dim); }
 
-  /* ====== galleria ====== */
+  /* ====== gallery ====== */
   .gtabs { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 36px; }
   .gtab { padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); font-size: 14px; color: var(--muted); transition: .2s; position: relative; overflow: hidden; }
   .gtab:hover { color: var(--text); }
@@ -434,7 +441,7 @@
   .hwc .chips i { width: 10px; height: 16px; border-radius: 2px; background: #2a1d40; }
   .hwc .chips i.on { background: var(--purple); box-shadow: 0 0 6px var(--purple); }
 
-  /* ====== installazione ====== */
+  /* ====== installation ====== */
   .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 44px; counter-reset: s; position: relative; }
   .step { position: relative; padding: 26px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--card); }
   .step::before {
@@ -480,7 +487,7 @@
   .foot-bottom { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 56px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 13px; color: var(--dim); }
   .foot-bottom a { color: var(--lilac); }
 
-  /* Vio che ti accompagna */
+  /* Vio keeps you company */
   .guide { position: fixed; right: 18px; bottom: 18px; z-index: 15; display: flex; align-items: flex-end; gap: 10px; opacity: 0; transform: translateY(30px); transition: .4s; pointer-events: none; }
   .guide.show { opacity: 1; transform: none; pointer-events: auto; }
   .guide .vio { width: 62px; cursor: pointer; filter: drop-shadow(0 0 14px rgba(168,85,247,.6)); animation: bob 3.2s ease-in-out infinite; }
@@ -488,7 +495,7 @@
     box-shadow: 0 10px 30px rgba(0,0,0,.5); transition: opacity .3s, transform .3s; }
   .guide .gb.hide { opacity: 0; transform: translateX(10px); }
 
-  /* comparsa allo scroll */
+  /* reveal on scroll */
   .reveal { opacity: 0; transform: translateY(30px); transition: opacity .8s ease, transform .8s ease; }
   .reveal.in { opacity: 1; transform: none; }
 
@@ -549,45 +556,48 @@
   <div class="wrap">
     <a href="#" class="logo"><svg class="vio" data-expr="done"></svg><span>My<b>Dev</b>Agent</span></a>
     <ul>
-      <li><a href="#clip">Guarda</a></li>
+      <li><a href="#clip">Watch</a></li>
       <li><a href="#vio">Vio</a></li>
-      <li><a href="#team">Il team</a></li>
-      <li><a href="#funzioni">Funzioni</a></li>
+      <li><a href="#team">The team</a></li>
+      <li><a href="#features">Features</a></li>
       <li><a href="#studio">Studio</a></li>
-      <li><a href="#installa">Installa</a></li>
+      <li><a href="#install">Install</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
-    <a class="gh" href="https://github.com/giovannisantorofrancesco2011-arch/MyDevAgent" target="_blank" rel="noopener">★ GitHub</a>
+    <div class="nav-r">
+      <a class="lang" href="https://mydevagent.github.io/" hreflang="it" lang="it" title="Versione italiana">Italiano</a>
+      <a class="gh" href="https://github.com/giovannisantorofrancesco2011-arch/MyDevAgent" target="_blank" rel="noopener">★ GitHub</a>
+    </div>
   </div>
 </nav>
 
 <header class="hero">
   <div class="wrap">
-    <span class="pill reveal"><i></i> Gratis · open source · funziona offline</span>
+    <span class="pill reveal"><i></i> Free · open source · works offline</span>
     <div class="vio-stage">
-      <svg class="vio vio-hero" id="vioHero" data-expr="ask" role="img" aria-label="Vio, il polpetto viola di MyDevAgent. Cliccalo!"></svg>
+      <svg class="vio vio-hero" id="vioHero" data-expr="ask" role="img" aria-label="Vio, the little purple octopus of MyDevAgent. Click it!"></svg>
       <div class="vio-shadow"></div>
       <div class="hearts" id="heroHearts"></div>
     </div>
-    <div><span class="bubble" id="bubble">Ciao! Sono Vio 👋</span></div>
-    <h1 class="reveal">Un team di <span class="grad">35 agenti AI</span><br>sul tuo PC.</h1>
+    <div><span class="bubble" id="bubble">Hi! I'm Vio 👋</span></div>
+    <h1 class="reveal">A team of <span class="grad">35 AI agents</span><br>on your PC.</h1>
     <p class="rot mono reveal" aria-hidden="true"><span class="p">›</span> <span id="rot"></span><span class="caret"></span></p>
-    <p class="lead reveal">MyDevAgent legge il tuo progetto, scrive il codice, lancia i test e si corregge da solo. Tutto in locale con Ollama: i tuoi file non lasciano mai il computer.</p>
+    <p class="lead reveal">MyDevAgent reads your project, writes the code, runs the tests and fixes its own mistakes. Everything runs locally with Ollama: your files never leave your computer.</p>
 
-    <div class="downloads reveal" id="scarica">
-      <a class="dl main" href="https://github.com/giovannisantorofrancesco2011-arch/MyDevAgent/archive/refs/heads/MyDevAgent.zip">
-        <span class="ic">📦</span><strong>Scarica MyDevAgent</strong><small>Cartella .zip · Windows, Linux, macOS</small>
+    <div class="downloads reveal" id="download">
+      <a class="dl main" href="https://github.com/giovannisantorofrancesco2011-arch/MyDevAgent/archive/refs/heads/EN.zip">
+        <span class="ic">📦</span><strong>Download MyDevAgent</strong><small>.zip folder · Windows, Linux, macOS</small>
       </a>
-      <a class="dl" href="https://github.com/giovannisantorofrancesco2011-arch/MyDevAgent/releases/latest/download/MyDevAgent-Studio-Setup.exe">
-        <span class="ic">🖥️</span><strong>Scarica Studio</strong><small>Setup .exe · l'editor con Vio · Windows</small>
+      <a class="dl" href="https://github.com/giovannisantorofrancesco2011-arch/MyDevAgent/releases/download/studio-en/MyDevAgent-Studio-Setup-EN.exe">
+        <span class="ic">🖥️</span><strong>Download Studio</strong><small>.exe installer · the editor with Vio · Windows</small>
       </a>
       <a class="dl soon" href="#mycode" id="mycodeBtn" aria-disabled="true">
-        <span class="tag">Presto</span>
-        <span class="ic">🧠</span><strong>MyCode</strong><small>Il nostro modello AI · in addestramento</small>
+        <span class="tag">Soon</span>
+        <span class="ic">🧠</span><strong>MyCode</strong><small>Our own AI model · in training</small>
       </a>
     </div>
-    <p class="note">Serve <a href="https://ollama.com" target="_blank" rel="noopener">Ollama</a> e Python 3.10+. Lo Studio li installa da solo.</p>
-    <a class="scroll-hint" href="#clip"><i></i>Guarda Vio al lavoro</a>
+    <p class="note">Requires <a href="https://ollama.com" target="_blank" rel="noopener">Ollama</a> and Python 3.10+. Studio installs them for you.</p>
+    <a class="scroll-hint" href="#clip"><i></i>Watch Vio at work</a>
   </div>
 </header>
 
@@ -599,13 +609,13 @@
 <section id="clip">
   <div class="wrap">
     <div class="center reveal">
-      <p class="kicker">Guarda Vio al lavoro</p>
-      <h2>Dalla tua richiesta al codice che funziona.<br><span class="grad">In sei passi.</span></h2>
-      <p class="sub">Chiedi una cosa in italiano. Vio legge il progetto, chiama gli agenti giusti, scrive il codice, lancia i test e, se qualcosa non va, si corregge da solo.</p>
+      <p class="kicker">Watch Vio at work</p>
+      <h2>From your request to working code.<br><span class="grad">In six steps.</span></h2>
+      <p class="sub">Ask for something in plain English. Vio reads the project, calls the right agents, writes the code, runs the tests and, if something goes wrong, fixes it on its own.</p>
     </div>
 
     <div class="player reveal" id="player">
-      <div class="p-top"><i></i><i></i><i></i><span class="mono">~/progetti/snake · mydevagent</span></div>
+      <div class="p-top"><i></i><i></i><i></i><span class="mono">~/projects/snake · mydevagent</span></div>
       <div class="p-body">
         <div class="p-side">
           <svg class="vio" id="clipVio" data-expr="ask" aria-hidden="true"></svg>
@@ -615,33 +625,33 @@
           </div>
           <div class="p-chip" id="clipChip">team <b>auto</b></div>
         </div>
-        <div class="stage" id="stage" aria-label="Animazione: come lavora MyDevAgent"></div>
+        <div class="stage" id="stage" aria-label="Animation: how MyDevAgent works"></div>
       </div>
       <div class="p-ctrl">
-        <button class="play" id="playBtn" aria-label="Pausa"></button>
+        <button class="play" id="playBtn" aria-label="Pause"></button>
         <div class="chaps" id="chaps"></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ====== FACCE DI VIO ====== -->
+<!-- ====== VIO'S FACES ====== -->
 <section id="vio">
   <div class="wrap">
     <div class="reveal">
-      <p class="kicker">Conosci Vio</p>
-      <h2>Un polpetto con otto tentacoli<br><span class="grad">e tante facce.</span></h2>
-      <p class="sub">Vio vive sopra la barra dove scrivi. Cambia faccia con la modalità (<kbd>Shift</kbd>+<kbd>Tab</kbd>), sbatte le palpebre, fa gli occhi a X sugli errori e i cuoricini con <code>/vio</code>. Prova a cliccare le facce.</p>
+      <p class="kicker">Meet Vio</p>
+      <h2>A little octopus with eight tentacles<br><span class="grad">and lots of faces.</span></h2>
+      <p class="sub">Vio lives just above the bar where you type. It changes face with the mode (<kbd>Shift</kbd>+<kbd>Tab</kbd>), blinks, gets X eyes on errors and heart eyes with <code>/vio</code>. Try clicking the faces.</p>
     </div>
     <div class="faces">
       <div class="face-big reveal">
         <svg class="vio" id="faceVio" data-expr="ask" aria-hidden="true"></svg>
-        <div><span class="bubble" id="faceSay">Ti chiedo conferma prima di ogni modifica.</span></div>
-        <p class="fname">modalità <b id="faceName">ask</b></p>
+        <div><span class="bubble" id="faceSay">I ask you before every change.</span></div>
+        <p class="fname"><b id="faceName">ask</b> mode</p>
       </div>
       <div class="reveal">
         <div class="face-list" id="faceList"></div>
-        <p class="face-tip">Le prime cinque sono le modalità: nel terminale passi da una all'altra con <kbd id="stKey">Shift+Tab</kbd>.</p>
+        <p class="face-tip">The first five are the modes: in the terminal you switch between them with <kbd id="stKey">Shift+Tab</kbd>.</p>
       </div>
     </div>
   </div>
@@ -651,55 +661,55 @@
 <section id="team">
   <div class="wrap">
     <div class="reveal">
-      <p class="kicker">Il team</p>
-      <h2>Scegli quanti agenti mettere al lavoro.</h2>
-      <p class="sub">Un router tiene veloci le richieste semplici e chiama il team completo solo quando serve davvero. Passa il mouse sui puntini per vedere chi sono.</p>
+      <p class="kicker">The team</p>
+      <h2>Choose how many agents to put to work.</h2>
+      <p class="sub">A router keeps simple requests fast and calls in the full team only when it's really needed. Hover over the dots to see who they are.</p>
     </div>
     <div class="team">
       <div class="reveal">
         <div class="mode-btns" id="modeBtns"></div>
         <div class="mode-info">
-          <div class="count"><span id="modeCount">1</span><small id="modeWord">agente</small></div>
+          <div class="count"><span id="modeCount">1</span><small id="modeWord">agent</small></div>
           <p id="modeDesc"></p>
-          <div class="meter">Velocità <span><i id="mSpeed"></i></span></div>
-          <div class="meter">Profondità <span><i id="mDepth"></i></span></div>
+          <div class="meter">Speed <span><i id="mSpeed"></i></span></div>
+          <div class="meter">Depth <span><i id="mDepth"></i></span></div>
         </div>
       </div>
       <div class="constel reveal" id="constel">
         <svg viewBox="-210 -210 420 420" id="constelSvg" aria-hidden="true"></svg>
         <div class="tip" id="tip"></div>
-        <div class="legend"><span><i style="background:var(--purple)"></i>15 agenti del nucleo</span><span><i style="background:var(--pink)"></i>20 agenti ultra-deep</span></div>
+        <div class="legend"><span><i style="background:var(--purple)"></i>15 core agents</span><span><i style="background:var(--pink)"></i>20 ultra-deep agents</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ====== FUNZIONI ====== -->
-<section id="funzioni">
+<!-- ====== FEATURES ====== -->
+<section id="features">
   <div class="wrap">
     <div class="center reveal">
-      <p class="kicker">Funzioni</p>
-      <h2>Tutto quello che fa un assistente di coding.<br><span class="grad">Ma a casa tua.</span></h2>
-      <p class="sub">Le idee migliori di Claude Code, Cursor e Aider, in un solo programma gratuito che gira anche senza internet.</p>
+      <p class="kicker">Features</p>
+      <h2>Everything a coding assistant does.<br><span class="grad">But at your place.</span></h2>
+      <p class="sub">The best ideas from Claude Code, Cursor and Aider, in a single free program that runs even without internet.</p>
     </div>
 
     <div class="stats">
-      <div class="stat reveal"><b data-count="35">0</b><span>agenti specializzati</span></div>
-      <div class="stat reveal"><b data-count="5">0</b><span>modalità di Vio</span></div>
-      <div class="stat reveal"><b data-count="100" data-suffix="%">0</b><span>locale e privato</span></div>
-      <div class="stat reveal"><b data-count="0" data-prefix="€ ">0</b><span>per sempre</span></div>
+      <div class="stat reveal"><b data-count="35">0</b><span>specialized agents</span></div>
+      <div class="stat reveal"><b data-count="5">0</b><span>Vio modes</span></div>
+      <div class="stat reveal"><b data-count="100" data-suffix="%">0</b><span>local and private</span></div>
+      <div class="stat reveal"><b data-count="0" data-prefix="$">0</b><span>forever</span></div>
     </div>
 
     <div class="grid">
-      <div class="card reveal"><div class="ic">✍️</div><h3>Lavora sui tuoi file</h3><p>Legge, modifica e ti mostra i diff prima di salvare. Sbagliato? <code>/undo</code> e si torna indietro.</p></div>
-      <div class="card reveal"><div class="ic">🧪</div><h3>Test veri</h3><p>Lancia i test del progetto, legge gli errori e corregge finché non passano.</p></div>
-      <div class="card reveal"><div class="ic">🌐</div><h3>Ricerca web</h3><p>Quando sei online cerca documentazione aggiornata. Offline funziona lo stesso.</p></div>
-      <div class="card reveal"><div class="ic">🧩</div><h3>Plugin, skill e MCP</h3><p>Compatibile con i plugin, le skill, gli hook e i server MCP di Claude Code.</p></div>
-      <div class="card reveal"><div class="ic">👀</div><h3>Anteprima dei siti</h3><p>Apre la pagina su localhost, la guarda con un modello vision e legge gli errori della console.</p></div>
-      <div class="card reveal"><div class="ic">🎮</div><h3>Multigiocatore</h3><p>Con <code>/multi</code> i tuoi amici seguono la sessione dal browser e scrivono all'agente.</p></div>
-      <div class="card reveal"><div class="ic">🎓</div><h3>Modalità impara</h3><p><code>/impara</code> ti spiega cosa fa e ti lascia scrivere un pezzo di codice da solo.</p></div>
-      <div class="card reveal"><div class="ic">🚀</div><h3>Progetti pronti</h3><p><code>/new</code> crea un sito, un gioco Pygame, un bot Discord o un'API FastAPI in un attimo.</p></div>
-      <div class="card reveal"><div class="ic">📊</div><h3>Statistiche</h3><p><code>/stats</code> mostra richieste, token, righe cambiate e i tuoi giorni di fila.</p></div>
+      <div class="card reveal"><div class="ic">✍️</div><h3>Works on your files</h3><p>Reads, edits and shows you the diffs before saving. Wrong? <code>/undo</code> takes you back.</p></div>
+      <div class="card reveal"><div class="ic">🧪</div><h3>Real tests</h3><p>Runs the project's tests, reads the errors and fixes things until they pass.</p></div>
+      <div class="card reveal"><div class="ic">🌐</div><h3>Web search</h3><p>When you're online it looks up up-to-date documentation. Offline it works just the same.</p></div>
+      <div class="card reveal"><div class="ic">🧩</div><h3>Plugins, skills and MCP</h3><p>Compatible with Claude Code plugins, skills, hooks and MCP servers.</p></div>
+      <div class="card reveal"><div class="ic">👀</div><h3>Website preview</h3><p><code>/preview</code> opens the page on localhost, looks at it with a vision model and reads the console errors.</p></div>
+      <div class="card reveal"><div class="ic">🎮</div><h3>Multiplayer</h3><p>With <code>/multi</code> your friends follow the session from their browser and chat with the agent.</p></div>
+      <div class="card reveal"><div class="ic">🎓</div><h3>Learn mode</h3><p><code>/learn</code> explains what it's doing and leaves a piece of code for you to write yourself.</p></div>
+      <div class="card reveal"><div class="ic">🚀</div><h3>Ready-made projects</h3><p><code>/new website</code>, <code>/new game</code>, <code>/new bot-discord</code> or <code>/new api</code>: a website, a Pygame game, a Discord bot or a FastAPI API in no time.</p></div>
+      <div class="card reveal"><div class="ic">📊</div><h3>Stats</h3><p><code>/stats</code> shows requests, tokens, lines changed and your daily streak.</p></div>
     </div>
   </div>
 </section>
@@ -709,15 +719,15 @@
   <div class="wrap studio">
     <div class="reveal">
       <p class="kicker">MyDevAgent Studio</p>
-      <h2>Il tuo editor, <span class="grad">con Vio dentro.</span></h2>
-      <p class="sub">Un editor completo basato su VSCodium, già pronto con MyDevAgent. Selezioni il codice, premi <kbd>Ctrl</kbd>+<kbd>I</kbd>, dici cosa vuoi e Vio lo cambia al posto tuo.</p>
+      <h2>Your editor, <span class="grad">with Vio inside.</span></h2>
+      <p class="sub">A full editor based on VSCodium, ready to go with MyDevAgent. Select some code, press <kbd>Ctrl</kbd>+<kbd>I</kbd>, say what you want and Vio changes it for you.</p>
       <ul>
-        <li>Installa da solo Python, Ollama e MyDevAgent</li>
-        <li>Chat con Vio nella barra laterale</li>
-        <li>Modifiche nel codice con <code>Ctrl+I</code>, da accettare o scartare</li>
-        <li>Tema nero e viola, statistiche integrate</li>
+        <li>Installs Python, Ollama and MyDevAgent by itself</li>
+        <li>Chat with Vio in the sidebar</li>
+        <li>In-code edits with <code>Ctrl+I</code>, to accept or discard</li>
+        <li>Black and purple theme, built-in stats</li>
       </ul>
-      <a class="btn" href="https://github.com/giovannisantorofrancesco2011-arch/MyDevAgent/releases/latest/download/MyDevAgent-Studio-Setup.exe">⬇ Scarica il setup per Windows</a>
+      <a class="btn" href="https://github.com/giovannisantorofrancesco2011-arch/MyDevAgent/releases/download/studio-en/MyDevAgent-Studio-Setup-EN.exe">⬇ Download the Windows installer</a>
     </div>
     <div class="sw reveal" id="sw">
       <div class="sw-top"><i></i><i></i><i></i><span>config.py · MyDevAgent Studio</span></div>
@@ -730,20 +740,20 @@
         <div class="sw-chat">
           <svg class="vio" id="swVio" data-expr="chat" aria-hidden="true"></svg>
           <div class="msg" id="swMsg"></div>
-          <div class="ctx">qwen2.5-coder:7b · locale</div>
+          <div class="ctx">qwen2.5-coder:7b · local</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ====== GALLERIA ====== -->
-<section id="galleria">
+<!-- ====== GALLERY ====== -->
+<section id="gallery">
   <div class="wrap">
     <div class="center reveal">
-      <p class="kicker">Screenshot veri</p>
-      <h2>Com'è davvero, dentro.</h2>
-      <p class="sub">Niente finzioni: queste sono schermate del programma vero.</p>
+      <p class="kicker">Real screenshots</p>
+      <h2>What it's really like inside.</h2>
+      <p class="sub">No mock-ups: these are screenshots of the real program. They show the Italian edition, the English one looks the same with English text.</p>
     </div>
     <div class="gtabs reveal" id="gtabs" role="tablist"></div>
     <div class="gframe reveal" id="gframe"></div>
@@ -757,11 +767,11 @@
     <div class="priv">
       <div class="reveal">
         <p class="kicker">Privacy</p>
-        <h2>Il tuo codice <span class="grad">resta a casa tua.</span></h2>
-        <p class="sub">Il modello gira sul tuo PC con Ollama. Niente account, niente abbonamento, niente file spediti a un server. Internet serve solo se vuoi la ricerca web.</p>
+        <h2>Your code <span class="grad">stays at home.</span></h2>
+        <p class="sub">The model runs on your PC with Ollama. No account, no subscription, no files sent to a server. You only need internet if you want web search.</p>
       </div>
       <div class="pc reveal" aria-hidden="true">
-        <span class="pc-label">💻 Il tuo PC</span>
+        <span class="pc-label">💻 Your PC</span>
         <span class="cloud">☁️ <s>server</s> 🔒</span>
         <div class="wall"></div>
         <div class="orbit" id="orbit"></div>
@@ -769,30 +779,31 @@
       </div>
     </div>
     <div class="reveal">
-      <h3 style="margin-top:60px;font-size:22px;letter-spacing:-.02em">Che PC serve?</h3>
-      <p class="sub" style="margin-top:6px">MyDevAgent guarda il tuo hardware al primo avvio e sceglie il modello giusto da solo.</p>
+      <h3 style="margin-top:60px;font-size:22px;letter-spacing:-.02em">What PC do you need?</h3>
+      <p class="sub" style="margin-top:6px">MyDevAgent checks your hardware on first launch and picks the right model by itself.</p>
     </div>
     <div class="hw" style="margin-top:22px">
-      <div class="hwc reveal"><div class="chips"><i class="on"></i><i></i><i></i><i></i></div><b>Solo CPU</b><span>qwen2.5-coder:3b</span><p>Va anche su un portatile senza scheda video.</p></div>
-      <div class="hwc reveal"><div class="chips"><i class="on"></i><i class="on"></i><i></i><i></i></div><b>GPU da 8 GB</b><span>qwen2.5-coder:7b</span><p>Il punto giusto per la maggior parte dei PC da gioco.</p></div>
-      <div class="hwc reveal"><div class="chips"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div><b>GPU da 16 GB</b><span>qwen2.5-coder:14b</span><p>Più contesto e strumenti nativi.</p></div>
-      <div class="hwc reveal"><div class="chips"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div><b>GPU da 24 GB</b><span>qwen3-coder:30b</span><p>Qualità alta e molto veloce.</p></div>
+      <div class="hwc reveal"><div class="chips"><i class="on"></i><i></i><i></i><i></i></div><b>CPU only</b><span>qwen2.5-coder:3b</span><p>Runs even on a laptop without a graphics card.</p></div>
+      <div class="hwc reveal"><div class="chips"><i class="on"></i><i class="on"></i><i></i><i></i></div><b>8 GB GPU</b><span>qwen2.5-coder:7b</span><p>The sweet spot for most gaming PCs.</p></div>
+      <div class="hwc reveal"><div class="chips"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div><b>16 GB GPU</b><span>qwen2.5-coder:14b</span><p>More context and native tool calling.</p></div>
+      <div class="hwc reveal"><div class="chips"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div><b>24 GB GPU</b><span>qwen3-coder:30b</span><p>High quality and very fast.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ====== INSTALLA ====== -->
-<section id="installa">
+<!-- ====== INSTALL ====== -->
+<section id="install">
   <div class="wrap">
     <div class="center reveal">
-      <p class="kicker">Installazione</p>
-      <h2>Pronto in tre passi.</h2>
-      <p class="sub">Oppure scarica lo Studio: fa tutto il setup da solo.</p>
+      <p class="kicker">Installation</p>
+      <h2>Ready in three steps.</h2>
+      <p class="sub">Or download Studio: it does the whole setup by itself.</p>
     </div>
     <div class="steps">
-      <div class="step reveal"><h3>Installa Ollama</h3><p>Scaricalo da <a href="https://ollama.com" target="_blank" rel="noopener">ollama.com</a>. È il motore che fa girare i modelli sul tuo PC.</p></div>
-      <div class="step reveal"><h3>Scarica ed estrai lo zip</h3><p>Premi <b>Scarica MyDevAgent</b> in cima alla pagina ed estrai la cartella dove vuoi.</p></div>
-      <div class="step reveal"><h3>Avvia</h3><p>Su Windows apri <code>run.bat</code>, su Linux e macOS lancia lo script qui sotto. Al primo avvio controlla tutto da solo.</p>
+      <div class="step reveal"><h3>Install Ollama</h3><p>Get it from <a href="https://ollama.com" target="_blank" rel="noopener">ollama.com</a>. It's the engine that runs the models on your PC.</p></div>
+      <div class="step reveal"><h3>Download and extract the zip</h3><p>Press <b>Download MyDevAgent</b> at the top of the page and extract the folder wherever you like. Or clone it:</p>
+        <button class="copy" data-copy="git clone -b EN https://github.com/giovannisantorofrancesco2011-arch/MyDevAgent">git clone -b EN … <span>⧉</span></button></div>
+      <div class="step reveal"><h3>Launch</h3><p>On Windows open <code>run.bat</code>, on Linux and macOS run the script below. On first launch it checks everything by itself.</p>
         <button class="copy" data-copy="./run.sh">./run.sh <span>⧉</span></button></div>
     </div>
   </div>
@@ -802,16 +813,17 @@
 <section id="faq">
   <div class="wrap">
     <div class="center reveal">
-      <p class="kicker">Domande</p>
-      <h2>Domande frequenti</h2>
+      <p class="kicker">Questions</p>
+      <h2>Frequently asked questions</h2>
     </div>
     <div class="faq reveal">
-      <details><summary>È davvero gratis?</summary><p>Sì. MyDevAgent è open source e i modelli girano sul tuo PC, quindi non paghi nessun abbonamento e nessun token.</p></details>
-      <details><summary>Serve internet?</summary><p>Solo per scaricare Ollama e i modelli la prima volta. Dopo funziona offline. Se sei online può anche cercare documentazione sul web.</p></details>
-      <details><summary>Che differenza c'è tra lo zip e lo Studio?</summary><p>Lo zip ti dà MyDevAgent nel terminale, per Windows, Linux e macOS. Lo Studio è un editor completo per Windows con Vio nella barra laterale, e installa da solo Python, Ollama e MyDevAgent.</p></details>
-      <details><summary>Può rovinare i miei file?</summary><p>Nella modalità <code>ask</code> ti chiede conferma prima di ogni modifica e ti mostra il diff. Se qualcosa non ti piace, <code>/undo</code> torna indietro. Con <code>plan</code> legge e basta.</p></details>
-      <details><summary>Funziona con i plugin di Claude Code?</summary><p>Sì: plugin, skill, hook, sotto-agenti e server MCP nello stesso formato di Claude Code. Li installi con <code>/plugin install</code>.</p></details>
-      <details><summary>Cos'è MyCode?</summary><p>È il nostro modello AI per il codice, addestrato apposta per MyDevAgent e pensato per una GPU da 8 GB. È ancora in addestramento.</p></details>
+      <details><summary>Is it really free?</summary><p>Yes. MyDevAgent is open source and the models run on your PC, so you pay no subscription and no tokens.</p></details>
+      <details><summary>Do I need internet?</summary><p>Only to download Ollama and the models the first time. After that it works offline. When you're online it can also search the web for documentation.</p></details>
+      <details><summary>What's the difference between the zip and Studio?</summary><p>The zip gives you MyDevAgent in the terminal, for Windows, Linux and macOS. Studio is a full editor for Windows with Vio in the sidebar, and it installs Python, Ollama and MyDevAgent by itself.</p></details>
+      <details><summary>Can it mess up my files?</summary><p>In <code>ask</code> mode it asks you before every change and shows you the diff. If you don't like something, <code>/undo</code> takes you back. In <code>plan</code> mode it only reads.</p></details>
+      <details><summary>Does it work with Claude Code plugins?</summary><p>Yes: plugins, skills, hooks, subagents and MCP servers in the same format as Claude Code. Install them with <code>/plugin install</code>.</p></details>
+      <details><summary>Is there an Italian version?</summary><p>Yes: MyDevAgent was born in Italian. The <a href="https://mydevagent.github.io/" hreflang="it" style="color:var(--lilac)">Italian site</a> downloads the Italian edition; this page downloads the English edition (branch <code>EN</code>).</p></details>
+      <details><summary>What is MyCode?</summary><p>It's our own AI model for code, trained specifically for MyDevAgent and designed for an 8 GB GPU. It's still in training.</p></details>
     </div>
   </div>
 </section>
@@ -820,12 +832,12 @@
 <section id="mycode">
   <div class="wrap">
     <div class="mycode reveal">
-      <p class="kicker">In arrivo</p>
-      <h2>MyCode, <span class="grad">il nostro modello AI.</span></h2>
-      <p class="sub" style="margin:0 auto">Un modello per il codice addestrato apposta per MyDevAgent, che gira su una GPU da 8 GB. Lo potrai usare da solo in Ollama o come cervello di MyDevAgent.</p>
+      <p class="kicker">Coming soon</p>
+      <h2>MyCode, <span class="grad">our own AI model.</span></h2>
+      <p class="sub" style="margin:0 auto">A coding model trained specifically for MyDevAgent that runs on an 8 GB GPU. You'll be able to use it on its own in Ollama or as MyDevAgent's brain.</p>
       <div class="progress"><i></i></div>
       <p class="brain" id="brain">step 1200 · loss 0.84</p>
-      <p class="note">In addestramento… torna presto per scaricarlo.</p>
+      <p class="note">In training… come back soon to download it.</p>
     </div>
   </div>
 </section>
@@ -834,47 +846,47 @@
   <div class="wrap">
     <div class="foot">
       <div>
-        <p class="motto">I tuoi modelli.<span>Il tuo PC.</span></p>
+        <p class="motto">Your models.<span>Your PC.</span></p>
         <svg class="vio" data-expr="love" aria-hidden="true"></svg>
       </div>
       <div>
-        <h4>Prodotto</h4>
+        <h4>Product</h4>
         <ul>
-          <li><a href="#scarica">Scarica</a></li>
-          <li><a href="#funzioni">Funzioni</a></li>
-          <li><a href="#studio">Studio per Windows</a></li>
-          <li><a href="#installa">Installa</a></li>
+          <li><a href="#download">Download</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#studio">Studio for Windows</a></li>
+          <li><a href="#install">Install</a></li>
           <li><a href="#faq">FAQ</a></li>
         </ul>
       </div>
       <div>
-        <h4>Legale</h4>
+        <h4>Legal</h4>
         <ul>
           <li><a href="privacy.html">Privacy</a></li>
-          <li><a href="termini.html">Termini</a></li>
-          <li><a href="termini.html#licenza">Licenza MIT</a></li>
-          <li><a href="https://github.com/giovannisantorofrancesco2011-arch/MyDevAgent/issues" target="_blank" rel="noopener">Contatti</a></li>
+          <li><a href="terms.html">Terms</a></li>
+          <li><a href="terms.html#license">MIT License</a></li>
+          <li><a href="https://github.com/giovannisantorofrancesco2011-arch/MyDevAgent/issues" target="_blank" rel="noopener">Contact</a></li>
         </ul>
       </div>
       <div>
         <h4>Release</h4>
         <ul>
-          <li><a href="https://github.com/giovannisantorofrancesco2011-arch/MyDevAgent/releases" target="_blank" rel="noopener">Tutte le release</a></li>
-          <li><a href="https://github.com/giovannisantorofrancesco2011-arch/MyDevAgent" target="_blank" rel="noopener">Codice su GitHub</a></li>
-          <li class="soon">MyCode · in arrivo</li>
+          <li><a href="https://github.com/giovannisantorofrancesco2011-arch/MyDevAgent/releases" target="_blank" rel="noopener">All releases</a></li>
+          <li><a href="https://github.com/giovannisantorofrancesco2011-arch/MyDevAgent" target="_blank" rel="noopener">Code on GitHub</a></li>
+          <li class="soon">MyCode · coming soon</li>
         </ul>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© 2026 MyDevAgent · open source con licenza MIT</span>
-      <span>Fatto con 💜 e otto tentacoli · scrivi <kbd>v</kbd><kbd>i</kbd><kbd>o</kbd> per una sorpresa</span>
+      <span>© 2026 MyDevAgent · open source under the MIT License · <a href="https://mydevagent.github.io/" hreflang="it" lang="it">Italiano</a></span>
+      <span>Made with 💜 and eight tentacles · type <kbd>v</kbd><kbd>i</kbd><kbd>o</kbd> for a surprise</span>
     </div>
   </div>
 </footer>
 
 <div class="guide" id="guide">
   <div class="gb" id="guideSay"></div>
-  <svg class="vio" id="guideVio" data-expr="chat" role="button" aria-label="Torna in cima"></svg>
+  <svg class="vio" id="guideVio" data-expr="chat" role="button" aria-label="Back to top"></svg>
 </div>
 <div class="toast" id="toast" role="status"></div>
 
@@ -883,7 +895,7 @@ const RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 
-/* ================= Vio: la stessa pixel art 14×8 del terminale (mydevagent/tui/mascot.py) ================= */
+/* ================= Vio: the same 14×8 pixel art as the terminal (mydevagent/tui/mascot.py) ================= */
 const COLORS = { P: "#a855f7", D: "#581c87", L: "#d8b4fe", K: "#1a0b2e", W: "#ffffff", C: "#f472b6", Y: "#facc15", B: "#67e8f9", R: "#f43f5e" };
 const HEAD = [".....DDDD.....", "...DDPPPPDD...", "..DPLPPPPPPD.."];
 const EYES = {
@@ -922,7 +934,7 @@ function drawVio(svg, intro = false) {
 function face(svg, expr) { if (svg.dataset.expr !== expr) { svg.dataset.expr = expr; if (!svg.dataset.busy) drawVio(svg); } }
 const allVios = () => $$("svg.vio");
 allVios().forEach(s => drawVio(s));
-setInterval(() => { pose ^= 1; allVios().forEach(s => { if (!s.dataset.busy) drawVio(s); }); }, 600); // tentacoli che ondeggiano
+setInterval(() => { pose ^= 1; allVios().forEach(s => { if (!s.dataset.busy) drawVio(s); }); }, 600); // wiggling tentacles
 
 function typeInto(el, text, ms = 26) {
   clearInterval(el._t); let i = 0; el.textContent = "";
@@ -934,28 +946,28 @@ function showToast(msg) { toast.textContent = msg; toast.classList.add("show"); 
 
 /* ================= hero ================= */
 const hero = $("#vioHero"), bubble = $("#bubble");
-if (!RM) { // Vio si "monta" pixel per pixel
+if (!RM) { // Vio assembles itself pixel by pixel
   hero.dataset.busy = 1; hero.classList.add("px-in"); drawVio(hero, true);
   setTimeout(() => { hero.classList.remove("px-in"); delete hero.dataset.busy; drawVio(hero); }, 1500);
 }
-let heroLock = 0; // quando Vio fa una faccia speciale non segue il mouse
+let heroLock = 0; // while Vio makes a special face it does not follow the mouse
 function heroFace(expr, ms) { heroLock = Date.now() + (ms || 0); face(hero, expr); if (ms) setTimeout(() => { if (Date.now() >= heroLock) face(hero, "ask"); }, ms); }
-setInterval(() => { // sbatte le palpebre
+setInterval(() => { // blinks
   if (Date.now() < heroLock || hero.dataset.busy) return;
   const prev = hero.dataset.expr; face(hero, "blink"); setTimeout(() => face(hero, prev), 150);
 }, 3400);
-addEventListener("pointermove", e => { // gli occhi seguono il mouse
+addEventListener("pointermove", e => { // the eyes follow the mouse
   if (Date.now() < heroLock || hero.dataset.expr === "blink") return;
   const r = hero.getBoundingClientRect(); if (r.bottom < 0) return;
   const dx = e.clientX - (r.left + r.width / 2);
   face(hero, dx < -120 ? "lookL" : dx > 120 ? "lookR" : "ask");
 }, { passive: true });
 const SAYS = [
-  ["Ciao! Sono Vio 👋", "ask"],
-  ["Otto tentacoli pronti a programmare!", "wow"],
-  ["Leggo il tuo codice e ti propongo un piano.", "plan"],
-  ["Gira tutto sul tuo PC, anche offline.", "done"],
-  ["Cliccami, dai! 💜", "chat"],
+  ["Hi! I'm Vio 👋", "ask"],
+  ["Eight tentacles ready to code!", "wow"],
+  ["I read your code and suggest a plan.", "plan"],
+  ["Everything runs on your PC, even offline.", "done"],
+  ["Go on, click me! 💜", "chat"],
 ];
 let say = 0;
 setInterval(() => {
@@ -973,11 +985,11 @@ function hearts(box, n = 6) {
     box.appendChild(s); setTimeout(() => s.remove(), 1600 + i * 90);
   }
 }
-const PATS = ["Grazie! 💜", "Fusa da polpo in corso… 💜", "Ancora, ancora! 💜", "Otto tentacoli di abbracci! 💜"];
+const PATS = ["Thank you! 💜", "Octopus purring in progress… 💜", "More, more! 💜", "Eight tentacles of hugs! 💜"];
 hero.addEventListener("click", () => { heroFace("love", 1800); typeInto(bubble, PATS[Math.floor(Math.random() * PATS.length)]); hearts($("#heroHearts")); });
 
-// riga che si riscrive da sola
-const ROT = ["scrive il codice al posto tuo", "lancia i test e li fa passare", "si corregge da solo", "funziona anche senza internet", "ti spiega cosa fa, se vuoi imparare"];
+// line that rewrites itself
+const ROT = ["writes the code for you", "runs the tests and makes them pass", "fixes its own mistakes", "works even without internet", "explains what it does, if you want to learn"];
 (async () => {
   const el = $("#rot"), sleep = ms => new Promise(r => setTimeout(r, ms));
   if (RM) { el.textContent = ROT[0]; return; }
@@ -989,14 +1001,15 @@ const ROT = ["scrive il codice al posto tuo", "lancia i test e li fa passare", "
   }
 })();
 
-// nastro dei comandi
-const CMDS = [["/fast", "risposte al volo"], ["/deep", "team completo"], ["/ultra-deep", "35 agenti"], ["/undo", "torna indietro"], ["/multi", "gioca con gli amici"],
-  ["/impara", "scrivi un pezzo tu"], ["/new", "progetti pronti"], ["/stats", "le tue statistiche"], ["/plugin", "plugin di Claude Code"], ["/vio", "saluta la mascotte"],
-  ["@file", "allega un file"], ["!shell", "lancia un comando"], ["#nota", "memoria"], ["Shift+Tab", "cambia modalità"], ["Esc Esc", "torna indietro"]];
+// command ribbon
+const CMDS = [["/fast", "instant answers"], ["/deep", "full team"], ["/ultra-deep", "35 agents"], ["/undo", "go back"], ["/multi", "play with friends"],
+  ["/learn", "write a piece yourself"], ["/new website", "ready-made projects"], ["/new game", "a Pygame game"], ["/preview", "look at your site"], ["/stats", "your stats"],
+  ["/plugin", "Claude Code plugins"], ["/vio", "say hi to the mascot"],
+  ["@file", "attach a file"], ["!shell", "run a command"], ["#note", "memory"], ["Shift+Tab", "switch mode"], ["Esc Esc", "go back"]];
 const trackHtml = CMDS.map(([c, d]) => `<span><b>${c}</b> ${d}</span>`).join("");
 $("#track").innerHTML = trackHtml + trackHtml;
 
-/* ================= player: un orologio che si può mettere in pausa ================= */
+/* ================= player: a clock that can be paused ================= */
 class Player {
   constructor({ chapters, onChapter, onProgress, stage }) {
     Object.assign(this, { chapters, onChapter, onProgress, stage });
@@ -1027,24 +1040,24 @@ class Player {
   setPlaying(on) { this.playing = on; this.stage?.classList.toggle("paused", !on); }
 }
 
-/* ================= clip: Vio al lavoro ================= */
+/* ================= clip: Vio at work ================= */
 const stage = $("#stage"), clipVio = $("#clipVio"), clipSay = $("#clipSay"), clipChip = $("#clipChip");
 const scene = html => { stage.innerHTML = `<div class="scene">${html}</div>`; return stage.firstChild; };
 const vioSays = (expr, text, team) => { face(clipVio, expr); typeInto(clipSay, text); if (team) clipChip.innerHTML = `team <b>${team}</b>`; };
 const SNAKE = [
   '<span class="k">import</span> random',
   '',
-  '<span class="k">class</span> <span class="f">Serpente</span>:',
+  '<span class="k">class</span> <span class="f">Snake</span>:',
   '    <span class="k">def</span> <span class="f">__init__</span>(self, x, y):',
-  '        self.corpo = [(x, y)]',
-  '        self.direzione = (<span class="n">1</span>, <span class="n">0</span>)',
+  '        self.body = [(x, y)]',
+  '        self.direction = (<span class="n">1</span>, <span class="n">0</span>)',
   '',
-  '    <span class="k">def</span> <span class="f">muovi</span>(self, mela):',
-  '        testa = self.<span class="f">prossima_testa</span>()',
-  '        self.corpo.<span class="f">insert</span>(<span class="n">0</span>, testa)',
-  '        <span class="k">if</span> testa == mela:',
-  '            <span class="k">return</span> <span class="k">True</span>  <span class="cm"># cresce!</span>',
-  '        self.corpo.<span class="f">pop</span>()',
+  '    <span class="k">def</span> <span class="f">move</span>(self, apple):',
+  '        head = self.<span class="f">next_head</span>()',
+  '        self.body.<span class="f">insert</span>(<span class="n">0</span>, head)',
+  '        <span class="k">if</span> head == apple:',
+  '            <span class="k">return</span> <span class="k">True</span>  <span class="cm"># it grows!</span>',
+  '        self.body.<span class="f">pop</span>()',
   '        <span class="k">return</span> <span class="k">False</span>',
 ];
 function confetti(box, n = 40) {
@@ -1058,36 +1071,36 @@ function confetti(box, n = 40) {
   }
 }
 const CHAPTERS = [
-  { name: "Chiedi", dur: 4800, fn: async p => {
-    vioSays("ask", "Ciao! Cosa costruiamo oggi?", "auto");
-    const s = scene(`<div class="ask"><div class="ask-hint">Scrivi quello che vuoi, in italiano.</div>
+  { name: "Ask", dur: 4800, fn: async p => {
+    vioSays("ask", "Hi! What are we building today?", "auto");
+    const s = scene(`<div class="ask"><div class="ask-hint">Type what you want, in plain English.</div>
       <div class="ask-box"><span class="p">›</span><span id="askT"></span><span class="caret"></span></div>
-      <div class="ask-keys"><kbd id="enter">Invio ↵</kbd> per mandare</div></div>`);
-    await p.wait(500); await p.type($("#askT", s), "crea il gioco snake con pygame e scrivi i test", 36);
+      <div class="ask-keys"><kbd id="enter">Enter ↵</kbd> to send</div></div>`);
+    await p.wait(500); await p.type($("#askT", s), "make a snake game with pygame and write the tests", 36);
     await p.wait(350); $("#enter", s).classList.add("press"); await p.wait(250);
-    $(".ask-box", s).classList.add("sent"); vioSays("chat", "Ricevuto! Un gioco snake coi test. Mi metto al lavoro.");
+    $(".ask-box", s).classList.add("sent"); vioSays("chat", "Got it! A snake game with tests. Getting to work.");
   } },
-  { name: "Legge", dur: 5400, fn: async p => {
-    vioSays("plan", "Prima leggo il progetto e preparo un piano.", "auto");
-    const s = scene(`<div class="read"><div class="pane"><h4>Progetto</h4><ul class="tree">
-      <li>📁 snake/</li><li>&nbsp; main.py</li><li>&nbsp; requirements.txt</li><li>&nbsp; README.md</li><li>📁 assets/</li><li>&nbsp; mela.png</li></ul></div>
-      <div class="pane"><h4>Piano</h4><ul class="plan">
-      <li data-n="1"><span><b>snake.py</b> · il serpente, la mela e le collisioni</span></li>
-      <li data-n="2"><span><b>main.py</b> · finestra, tasti e loop di gioco</span></li>
-      <li data-n="3"><span><b>tests/test_snake.py</b> · 7 test</span></li>
-      <li data-n="4"><span>lanciare i test e fare la review</span></li></ul></div></div><div class="scanbar"></div>`);
+  { name: "Read", dur: 5400, fn: async p => {
+    vioSays("plan", "First I read the project and make a plan.", "auto");
+    const s = scene(`<div class="read"><div class="pane"><h4>Project</h4><ul class="tree">
+      <li>📁 snake/</li><li>&nbsp; main.py</li><li>&nbsp; requirements.txt</li><li>&nbsp; README.md</li><li>📁 assets/</li><li>&nbsp; apple.png</li></ul></div>
+      <div class="pane"><h4>Plan</h4><ul class="plan">
+      <li data-n="1"><span><b>snake.py</b> · the snake, the apple and collisions</span></li>
+      <li data-n="2"><span><b>main.py</b> · window, keys and game loop</span></li>
+      <li data-n="3"><span><b>tests/test_snake.py</b> · 7 tests</span></li>
+      <li data-n="4"><span>run the tests and do the review</span></li></ul></div></div><div class="scanbar"></div>`);
     const items = $$(".tree li", s);
     for (const li of items) { li.classList.add("scan"); await p.wait(260); li.classList.remove("scan"); li.classList.add("ok"); }
     $(".scanbar", s)?.remove();
     for (const li of $$(".plan li", s)) { li.classList.add("in"); await p.wait(420); }
   } },
   { name: "Team", dur: 5600, fn: async p => {
-    vioSays("think", "Il router sceglie il team: basta quello bilanciato.");
-    const small = stage.clientWidth < 560; // sul telefono il team si dispone in verticale
+    vioSays("think", "The router picks the team: balanced is enough.");
+    const small = stage.clientWidth < 560; // on phones the team is laid out vertically
     const [W, H, cx, cy] = small ? [360, 430, 180, 215] : [600, 370, 300, 190];
     const NODES = small
-      ? [["🏛️", "Architetto", 88, 95], ["🐍", "Python", 272, 95], ["🧪", "Test", 88, 330], ["🔍", "Reviewer", 272, 330], ["📦", "Formatter", 180, 400]]
-      : [["🏛️", "Architetto", 115, 90], ["🐍", "Python", 485, 90], ["🧪", "Test", 95, 265], ["🔍", "Reviewer", 505, 265], ["📦", "Formatter", 300, 330]];
+      ? [["🏛️", "Architect", 88, 95], ["🐍", "Python", 272, 95], ["🧪", "Test", 88, 330], ["🔍", "Reviewer", 272, 330], ["📦", "Formatter", 180, 400]]
+      : [["🏛️", "Architect", 115, 90], ["🐍", "Python", 485, 90], ["🧪", "Test", 95, 265], ["🔍", "Reviewer", 505, 265], ["📦", "Formatter", 300, 330]];
     const svg = `<svg class="net" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">
       <text class="router" x="${cx}" y="22">router ▸ <tspan class="m" id="rm"></tspan></text>
       ${NODES.map(([, , x, y]) => `<line class="ln" x1="${cx}" y1="${cy}" x2="${x}" y2="${y}"/><line class="fl" x1="${cx}" y1="${cy}" x2="${x}" y2="${y}"/>`).join("")}
@@ -1102,10 +1115,10 @@ const CHAPTERS = [
     await p.wait(300); await p.type($("#rm", s), "balanced", 60); clipChip.innerHTML = "team <b>balanced</b>";
     const lns = $$(".ln", s), fls = $$(".fl", s), nds = $$(".nd", s);
     for (let i = 0; i < nds.length; i++) { lns[i].style.strokeDashoffset = 0; await p.wait(280); nds[i].classList.add("on"); fls[i].classList.add("on"); await p.wait(200); }
-    face(clipVio, "chat"); face($("#netVio", s), "done"); typeInto(clipSay, "Architetto, Python, Test, Reviewer e Formatter: si parte!");
+    face(clipVio, "chat"); face($("#netVio", s), "done"); typeInto(clipSay, "Architect, Python, Test, Reviewer and Formatter: let's go!");
   } },
-  { name: "Scrive", dur: 6600, fn: async p => {
-    vioSays("auto-edit", "Scrivo il codice. Tu intanto bevi un succo 🧃", "balanced");
+  { name: "Write", dur: 6600, fn: async p => {
+    vioSays("auto-edit", "I'll write the code. You grab a juice 🧃", "balanced");
     const s = scene(`<div class="ed"><div class="tabs"><span class="on">snake.py</span><span>main.py</span><span>test_snake.py</span><em id="cnt">+0</em></div>
       <div class="code">${SNAKE.map((l, i) => `<span class="l add" data-g="${i + 1}">${l || " "}</span>`).join("")}</div></div>`);
     const lines = $$(".l", s), cnt = $("#cnt", s), tabs = $$(".tabs span", s);
@@ -1117,32 +1130,32 @@ const CHAPTERS = [
     tabs[2].classList.add("ok"); cnt.textContent = "+142";
   } },
   { name: "Test", dur: 7600, fn: async p => {
-    vioSays("think", "Lancio i test per vedere se funziona davvero.");
+    vioSays("think", "Running the tests to see if it really works.");
     const s = scene(`<div class="tt" id="tt"></div>`), tt = $("#tt", s);
     const add = html => { const d = document.createElement("div"); d.innerHTML = html; tt.appendChild(d); return d; };
     add('<span class="p">$</span> pytest -q'); await p.wait(400);
     const dots = add('<span class="dots"></span>').firstChild;
     for (const ok of [1, 1, 0, 1, 1, 1, 1]) { dots.innerHTML += `<i class="${ok ? "" : "x"}">${ok ? "." : "F"}</i>`; await p.wait(160); }
-    add('<span class="err">FAILED</span> test_mangia_mela <span class="d">· il serpente non cresce</span>');
-    tt.classList.add("shake"); vioSays("error", "Ops! Un test non passa. Guardo l'errore…"); await p.wait(1300);
-    add('<span class="d">  mela arriva come lista [5, 3], testa è una tupla (5, 3)</span>'); await p.wait(700);
-    vioSays("auto-edit", "Trovato! Correggo snake.py da sola.");
-    add('<span class="c">✎ snake.py</span>'); add('<span class="err">-        if testa == mela:</span>'); await p.wait(250);
-    add('<span class="ok">+        if testa == tuple(mela):</span>'); await p.wait(700);
+    add('<span class="err">FAILED</span> test_eat_apple <span class="d">· the snake doesn\'t grow</span>');
+    tt.classList.add("shake"); vioSays("error", "Oops! A test is failing. Looking at the error…"); await p.wait(1300);
+    add('<span class="d">  apple arrives as a list [5, 3], head is a tuple (5, 3)</span>'); await p.wait(700);
+    vioSays("auto-edit", "Found it! Fixing snake.py myself.");
+    add('<span class="c">✎ snake.py</span>'); add('<span class="err">-        if head == apple:</span>'); await p.wait(250);
+    add('<span class="ok">+        if head == tuple(apple):</span>'); await p.wait(700);
     add('<span class="p">$</span> pytest -q'); await p.wait(300);
     const d2 = add('<span class="dots"></span>').firstChild;
     for (let i = 0; i < 7; i++) { d2.innerHTML += "<i>.</i>"; await p.wait(110); }
-    add('<span class="ok">✓ 7 test passati</span> <span class="d">in 0.21s</span>');
-    vioSays("wow", "Ora passano tutti e 7! ✨");
+    add('<span class="ok">✓ 7 tests passed</span> <span class="d">in 0.21s</span>');
+    vioSays("wow", "Now all 7 pass! ✨");
   } },
-  { name: "Fatto", dur: 5600, fn: async p => {
-    vioSays("done", "Fatto! Vuoi vedere il diff prima di salvare?");
-    const s = scene(`<div class="fin"><h3>Fatto in <span class="grad">36 secondi</span></h3>
-      <div class="kpis"><div class="kpi"><b>3</b><span>file creati</span></div><div class="kpi"><b>+142</b><span>righe</span></div>
-      <div class="kpi"><b>7 ✓</b><span>test passati</span></div><div class="kpi"><b>1</b><span>errore corretto da solo</span></div></div>
-      <div class="fake-btns"><span>Mostra il diff</span><span>/undo</span><span>python main.py ▶</span></div></div>`);
+  { name: "Done", dur: 5600, fn: async p => {
+    vioSays("done", "Done! Want to see the diff before saving?");
+    const s = scene(`<div class="fin"><h3>Done in <span class="grad">36 seconds</span></h3>
+      <div class="kpis"><div class="kpi"><b>3</b><span>files created</span></div><div class="kpi"><b>+142</b><span>lines</span></div>
+      <div class="kpi"><b>7 ✓</b><span>tests passed</span></div><div class="kpi"><b>1</b><span>error fixed on its own</span></div></div>
+      <div class="fake-btns"><span>Show the diff</span><span>/undo</span><span>python main.py ▶</span></div></div>`);
     for (const k of $$(".kpi", s)) { k.classList.add("in"); await p.wait(160); }
-    confetti(s); await p.wait(1600); face(clipVio, "love"); typeInto(clipSay, "Ti piace? Adesso tocca a te giocare! 🐍💜");
+    confetti(s); await p.wait(1600); face(clipVio, "love"); typeInto(clipSay, "Like it? Now it's your turn to play! 🐍💜");
   } },
 ];
 const chapsEl = $("#chaps");
@@ -1160,20 +1173,20 @@ function syncPlay() {
   const on = clipVisible && !userPaused && !document.hidden;
   if (on && !clipStarted) { clipStarted = true; clip.go(0); }
   clip.setPlaying(on);
-  playBtn.innerHTML = userPaused ? PLAY : PAUSE; playBtn.setAttribute("aria-label", userPaused ? "Riproduci" : "Pausa");
+  playBtn.innerHTML = userPaused ? PLAY : PAUSE; playBtn.setAttribute("aria-label", userPaused ? "Play" : "Pause");
 }
 playBtn.addEventListener("click", () => { userPaused = !userPaused; syncPlay(); });
 chapBtns.forEach(b => b.addEventListener("click", () => { clipStarted = true; userPaused = false; clip.go(+b.dataset.i); syncPlay(); }));
 new IntersectionObserver(([e]) => { clipVisible = e.isIntersecting; syncPlay(); }, { threshold: .35 }).observe($("#player"));
 document.addEventListener("visibilitychange", () => { syncPlay(); studioPlayer.setPlaying(swVisible && !document.hidden); });
-if (RM) { clip.idx = 5; CHAPTERS[5].fn({ wait: () => new Promise(() => {}), type: async () => {} }); } // senza animazioni: mostra il risultato
+if (RM) { clip.idx = 5; CHAPTERS[5].fn({ wait: () => new Promise(() => {}), type: async () => {} }); } // without animations: show the result
 
-/* ================= facce di Vio ================= */
+/* ================= Vio's faces ================= */
 const FACES = [
-  ["ask", "Ti chiedo conferma prima di ogni modifica.", "modalità"], ["auto-edit", "Modifico i file da sola, per i comandi ti chiedo.", "modalità"],
-  ["plan", "Leggo e ti propongo un piano, senza toccare niente.", "modalità"], ["auto", "Faccio tutto da sola, dentro questa cartella.", "modalità"],
-  ["chat", "Rispondo e basta: i file li salvi tu con /apply.", "modalità"], ["think", "Hmm… ci sto pensando.", "mentre lavora"],
-  ["done", "Fatto! Tutti i test passano.", "a fine lavoro"], ["error", "Ops, un errore. Lo sistemo subito!", "sugli errori"], ["love", "Grazie per le coccole! 💜", "con /vio"],
+  ["ask", "I ask you before every change.", "mode"], ["auto-edit", "I edit files on my own, but I ask before running commands.", "mode"],
+  ["plan", "I read and suggest a plan, without touching anything.", "mode"], ["auto", "I do everything myself, inside this folder.", "mode"],
+  ["chat", "I just answer: you save the files yourself with /apply.", "mode"], ["think", "Hmm… let me think.", "while working"],
+  ["done", "Done! All tests pass.", "when finished"], ["error", "Oops, an error. I'll fix it right away!", "on errors"], ["love", "Thanks for the cuddles! 💜", "with /vio"],
 ];
 const faceVio = $("#faceVio"), faceSay = $("#faceSay"), faceName = $("#faceName"), faceList = $("#faceList");
 faceList.innerHTML = FACES.map(([n, , k], i) => `<button class="face" data-i="${i}"><svg class="vio" data-expr="${n}"></svg>${n}<small>${k}</small></button>`).join("");
@@ -1183,27 +1196,27 @@ let faceIdx = 0, faceAuto = true;
 function pickFace(i) {
   faceIdx = i; const [n, t, k] = FACES[i];
   faceBtns.forEach((b, j) => b.classList.toggle("on", i === j));
-  face(faceVio, n); typeInto(faceSay, t); faceName.textContent = n; faceName.previousSibling.textContent = k === "modalità" ? "modalità " : k + " · ";
+  face(faceVio, n); typeInto(faceSay, t); faceName.textContent = n; faceName.nextSibling.textContent = k === "mode" ? " mode" : " · " + k;
   if (i < 5) { const k2 = $("#stKey"); k2.classList.remove("kbd-flash"); void k2.offsetWidth; k2.classList.add("kbd-flash"); }
 }
 faceBtns.forEach(b => b.addEventListener("click", () => { faceAuto = false; pickFace(+b.dataset.i); if (FACES[+b.dataset.i][0] === "love") hearts($(".face-big")); }));
 pickFace(0);
 let faceVisible = false;
 new IntersectionObserver(([e]) => { faceVisible = e.isIntersecting; }, { threshold: .3 }).observe($(".faces"));
-setInterval(() => { if (faceAuto && faceVisible && !RM) pickFace((faceIdx + 1) % 5); }, 2800); // come premere Shift+Tab
+setInterval(() => { if (faceAuto && faceVisible && !RM) pickFace((faceIdx + 1) % 5); }, 2800); // like pressing Shift+Tab
 
-/* ================= team: la costellazione dei 35 agenti ================= */
-const AGENTS = ["Architetto del Codice", "Algoritmi & Strutture Dati", "Linguaggi & Framework", "Debugging & Testing", "Frontend", "Backend & API", "Database & ORM",
-  "DevOps & CI/CD", "Security & Best Practices", "Performance & Optimization", "Research Agent", "Code Reviewer & Refactor", "Documentation & Commenti",
-  "Edge Case & Robustness", "Output Formatter & Final Delivery", "Analista dei requisiti", "API Designer", "Mobile", "Cloud Architect", "Data Engineer",
-  "AI/ML Engineer", "Concorrenza & Async", "Sistemi & Low-level", "Accessibilità & i18n", "UX/UI Designer", "Osservabilità", "Dipendenze & Supply chain",
-  "Migrazioni & Legacy", "Test Strategist", "Threat Modeling & Privacy", "Scalabilità & Carico", "Release & Versioning", "Fact-checker web",
-  "Avvocato del diavolo", "Integratore capo"];
+/* ================= team: the constellation of the 35 agents ================= */
+const AGENTS = ["Code Architect", "Algorithms & Data Structures", "Languages & Frameworks", "Debugging & Testing", "Frontend", "Backend & API", "Database & ORM",
+  "DevOps & CI/CD", "Security & Best Practices", "Performance & Optimization", "Research Agent", "Code Reviewer & Refactor", "Documentation & Comments",
+  "Edge Case & Robustness", "Output Formatter & Final Delivery", "Requirements Analyst", "API Designer", "Mobile", "Cloud Architect", "Data Engineer",
+  "AI/ML Engineer", "Concurrency & Async", "Systems & Low-level", "Accessibility & i18n", "UX/UI Designer", "Observability", "Dependencies & Supply Chain",
+  "Migrations & Legacy", "Test Strategist", "Threat Modeling & Privacy", "Scalability & Load", "Release & Versioning", "Web Fact-checker",
+  "Devil's Advocate", "Chief Integrator"];
 const MODES = [
-  ["fast", [3], "Un solo specialista con le regole del Formatter. Risposte in pochi secondi.", 95, 20, "fast"],
-  ["balanced", [1, 3, 4, 12, 15], "Architetto, specialista, test e review sul diff reale. Il team standard.", 70, 45, "balanced"],
-  ["deep", [1, 3, 4, 9, 10, 12, 13, 14, 15], "In più sicurezza, performance, casi limite e documentazione, con due giri di review.", 45, 72, "deep"],
-  ["ultra-deep", AGENTS.map((_, i) => i + 1), "Tutti i 35 agenti. Lento, ma per i lavori importanti: fino a tre giri di review.", 15, 100, "ultra-deep"],
+  ["fast", [3], "A single specialist following the Formatter's rules. Answers in a few seconds.", 95, 20, "fast"],
+  ["balanced", [1, 3, 4, 12, 15], "Architect, specialist, tests and review on the real diff. The standard team.", 70, 45, "balanced"],
+  ["deep", [1, 3, 4, 9, 10, 12, 13, 14, 15], "Adds security, performance, edge cases and documentation, with two review rounds.", 45, 72, "deep"],
+  ["ultra-deep", AGENTS.map((_, i) => i + 1), "All 35 agents. Slow, but for important work: up to three review rounds.", 15, 100, "ultra-deep"],
 ];
 const cs = $("#constelSvg");
 let csHtml = `<circle class="ring" r="105"/><circle class="ring" r="178"/>`;
@@ -1235,7 +1248,7 @@ function pickMode(i) {
   const cnt = $("#modeCount"), from = +cnt.textContent, t0 = performance.now();
   const tick = now => { const p = Math.min((now - t0) / 600, 1); cnt.textContent = Math.round(from + (ids.length - from) * p); if (p < 1) requestAnimationFrame(tick); };
   requestAnimationFrame(tick);
-  $("#modeWord").textContent = ids.length === 1 ? "agente" : "agenti";
+  $("#modeWord").textContent = ids.length === 1 ? "agent" : "agents";
   $("#modeDesc").textContent = desc; $("#mSpeed").style.width = speed + "%"; $("#mDepth").style.width = depth + "%";
   face($("#teamVio"), expr);
 }
@@ -1247,17 +1260,17 @@ setInterval(() => { if (modeAuto && teamVisible && !RM) pickMode((modeIdx + 1) %
 /* ================= studio: Ctrl+I ================= */
 const OLD = [
   '<span class="k">import</span> json', '',
-  '<span class="k">def</span> <span class="f">leggi_config</span>(percorso):',
-  '    <span class="k">with</span> <span class="f">open</span>(percorso) <span class="k">as</span> f:',
+  '<span class="k">def</span> <span class="f">load_config</span>(path):',
+  '    <span class="k">with</span> <span class="f">open</span>(path) <span class="k">as</span> f:',
   '        <span class="k">return</span> json.<span class="f">load</span>(f)', '',
-  'config = <span class="f">leggi_config</span>(<span class="s">"impostazioni.json"</span>)',
+  'config = <span class="f">load_config</span>(<span class="s">"settings.json"</span>)',
 ];
 const NEW = [
   '    <span class="k">try</span>:',
-  '        <span class="k">with</span> <span class="f">open</span>(percorso) <span class="k">as</span> f:',
+  '        <span class="k">with</span> <span class="f">open</span>(path) <span class="k">as</span> f:',
   '            <span class="k">return</span> json.<span class="f">load</span>(f)',
   '    <span class="k">except</span> <span class="f">FileNotFoundError</span>:',
-  '        <span class="k">return</span> {}  <span class="cm"># niente file: impostazioni vuote</span>',
+  '        <span class="k">return</span> {}  <span class="cm"># no file: empty settings</span>',
 ];
 const swCode = $("#swCode"), swKeys = $("#swKeys"), swVio = $("#swVio"), swMsg = $("#swMsg");
 const L = (html, g, cls = "") => `<span class="l ${cls}" data-g="${g}">${html || " "}</span>`;
@@ -1272,36 +1285,36 @@ function swRender(state, ask = "") {
       h += L(l, i + 1, state === "sel" || state === "ask" ? (inSel ? "sel" : "") : "");
       if (i === 4 && state === "ask") h += `<div class="inl"><span class="p">✦</span> <span id="swAsk">${ask}</span><span class="caret"></span></div>`;
     });
-    if (state === "diff") h += `<div class="inl"><span class="p">✦</span> gestisci il file mancante<div class="acts"><span class="ok" id="swOk">Accetta ⇥</span><span>Scarta</span></div></div>`;
+    if (state === "diff") h += `<div class="inl"><span class="p">✦</span> handle the missing file<div class="acts"><span class="ok" id="swOk">Accept ⇥</span><span>Discard</span></div></div>`;
   }
   swCode.innerHTML = h;
 }
 const studioPlayer = new Player({ stage: $("#sw"), chapters: [{ name: "ctrl-i", dur: 12500, fn: async p => {
-  swRender("plain"); face(swVio, "chat"); typeInto(swMsg, "Seleziona del codice e premi Ctrl+I: lo cambio io.");
+  swRender("plain"); face(swVio, "chat"); typeInto(swMsg, "Select some code and press Ctrl+I: I'll change it.");
   await p.wait(1400); swRender("sel"); await p.wait(700);
   swKeys.classList.add("on"); await p.wait(700); swKeys.classList.remove("on");
-  swRender("ask"); face(swVio, "ask"); await p.type($("#swAsk"), "gestisci il file mancante", 45);
-  await p.wait(400); face(swVio, "think"); typeInto(swMsg, "Ci penso…"); await p.wait(1200);
-  swRender("diff"); face(swVio, "auto-edit"); typeInto(swMsg, "Ecco: se il file non c'è, restituisco un dizionario vuoto.");
+  swRender("ask"); face(swVio, "ask"); await p.type($("#swAsk"), "handle the missing file", 45);
+  await p.wait(400); face(swVio, "think"); typeInto(swMsg, "Thinking…"); await p.wait(1200);
+  swRender("diff"); face(swVio, "auto-edit"); typeInto(swMsg, "Here: if the file is missing, I return an empty dictionary.");
   await p.wait(2000); $("#swOk").classList.add("press"); await p.wait(400);
-  swRender("done"); face(swVio, "done"); typeInto(swMsg, "Modifica applicata! ✓");
+  swRender("done"); face(swVio, "done"); typeInto(swMsg, "Change applied! ✓");
 } }] });
 let swVisible = false;
-swRender("plain"); typeInto(swMsg, "Seleziona del codice e premi Ctrl+I: lo cambio io.");
+swRender("plain"); typeInto(swMsg, "Select some code and press Ctrl+I: I'll change it.");
 new IntersectionObserver(([e]) => {
   swVisible = e.isIntersecting;
   if (swVisible && !RM && !studioPlayer.gen) studioPlayer.go(0);
   studioPlayer.setPlaying(swVisible && !RM && !document.hidden);
 }, { threshold: .35 }).observe($("#sw"));
 
-/* ================= galleria ================= */
+/* ================= gallery ================= */
 const SHOTS = [
-  ["Terminale", "img/lavoro.png", "Il terminale: Vio cambia faccia con la modalità e ti dice cosa fa il team."],
-  ["Multigiocatore", "img/multi.png", "/multi: un amico si collega dal browser e chiede modifiche, tu confermi."],
-  ["Studio", "img/studio.png", "MyDevAgent Studio: chat con Vio, statistiche e modifica con Ctrl+I."],
-  ["/new e /impara", "img/impara.png", "/new crea un progetto pronto, /impara ti lascia scrivere un pezzo da solo."],
-  ["Plugin", "img/plugin.png", "/plugin: i plugin di Claude Code funzionano anche qui."],
-  ["Sotto-agenti", "img/agenti.png", "I sotto-agenti, ognuno con il suo contesto separato."],
+  ["Terminal", "img/lavoro.png", "The terminal: Vio changes face with the mode and tells you what the team is doing (Italian edition shown)."],
+  ["Multiplayer", "img/multi.png", "/multi: a friend joins from the browser and asks for changes, you confirm (Italian edition shown)."],
+  ["Studio", "img/studio.png", "MyDevAgent Studio: chat with Vio, stats and edits with Ctrl+I (Italian edition shown)."],
+  ["/new and /learn", "img/impara.png", "/new creates a ready-made project, /learn lets you write a piece yourself (Italian edition shown, where it is called /impara)."],
+  ["Plugins", "img/plugin.png", "/plugin: Claude Code plugins work here too (Italian edition shown)."],
+  ["Subagents", "img/agenti.png", "Subagents, each with its own separate context (Italian edition shown)."],
 ];
 const gtabs = $("#gtabs"), gframe = $("#gframe"), gcap = $("#gcap");
 gtabs.innerHTML = SHOTS.map(([n], i) => `<button class="gtab" role="tab" data-i="${i}">${n}</button>`).join("");
@@ -1311,7 +1324,7 @@ let gIdx = 0, gAuto = !RM, gVisible = false, gTimer;
 function pickShot(i) {
   gIdx = i; gBtns.forEach((b, j) => { b.classList.toggle("on", i === j); b.classList.toggle("hold", !gAuto); b.setAttribute("aria-selected", i === j); });
   gImgs.forEach((im, j) => im.classList.toggle("on", i === j)); gcap.textContent = SHOTS[i][2];
-  // riavvia l'animazione della barretta
+  // restart the little bar's animation
   const b = gBtns[i]; b.classList.remove("on"); void b.offsetWidth; b.classList.add("on");
   clearTimeout(gTimer); if (gAuto) gTimer = setTimeout(() => { if (gVisible) pickShot((gIdx + 1) % SHOTS.length); else gWait = true; }, 6000);
 }
@@ -1320,17 +1333,17 @@ gBtns.forEach(b => b.addEventListener("click", () => { gAuto = false; pickShot(+
 new IntersectionObserver(([e]) => { gVisible = e.isIntersecting; if (gVisible && gWait) { gWait = false; pickShot((gIdx + 1) % SHOTS.length); } }, { threshold: .3 }).observe(gframe);
 pickShot(0);
 
-/* ================= privacy: file che girano attorno a Vio ================= */
+/* ================= privacy: files orbiting around Vio ================= */
 const FILES = ["main.py", "index.html", "app.js", "README.md", ".env", "test_app.py"];
 $("#orbit").innerHTML = FILES.map((f, i) => `<span style="--a:${i * 60}deg;--r:${i % 2 ? 150 : 118}px"><b>📄 ${f}</b></span>`).join("");
 
-/* ================= MyCode: numeri dell'addestramento ================= */
+/* ================= MyCode: training numbers ================= */
 (() => {
   const el = $("#brain"); let step = 1200, loss = .84;
   if (!RM) setInterval(() => { step += 7 + Math.floor(Math.random() * 6); loss = Math.max(.31, loss - Math.random() * .004); el.textContent = `step ${step} · loss ${loss.toFixed(2)} · GPU 8 GB`; }, 700);
 })();
 
-/* ================= comparsa allo scroll + contatori ================= */
+/* ================= reveal on scroll + counters ================= */
 const io = new IntersectionObserver(entries => entries.forEach(e => {
   if (!e.isIntersecting) return;
   e.target.classList.add("in");
@@ -1349,7 +1362,7 @@ function countUp(el) {
   requestAnimationFrame(tick);
 }
 
-// card che si inclinano verso il mouse
+// cards that tilt toward the mouse
 $$(".card").forEach(c => {
   c.addEventListener("pointermove", e => {
     const r = c.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
@@ -1359,7 +1372,7 @@ $$(".card").forEach(c => {
   c.addEventListener("pointerleave", () => { c.style.transform = ""; });
 });
 
-/* ================= barra in alto, progresso, sezione attiva ================= */
+/* ================= top bar, progress, active section ================= */
 const nav = $("#nav"), prog = $("#prog"), guide = $("#guide"), guideSay = $("#guideSay"), guideVio = $("#guideVio");
 const navLinks = $$("nav ul a");
 function onScroll() {
@@ -1370,9 +1383,9 @@ function onScroll() {
 }
 addEventListener("scroll", onScroll, { passive: true }); onScroll();
 const GUIDE = {
-  clip: ["Guarda! Qui sono io al lavoro 🐙", "chat"], vio: ["Quale faccia ti piace di più?", "love"], team: ["Il mio team: 35 agenti!", "ultra-deep"],
-  funzioni: ["Ecco tutto quello che so fare.", "done"], studio: ["Qui vivo dentro un editor!", "auto-edit"], galleria: ["Screenshot veri, niente trucchi.", "ask"],
-  privacy: ["I tuoi file restano con noi due.", "done"], installa: ["Tre passi e ci conosciamo 😊", "wow"], faq: ["Chiedi pure!", "think"], mycode: ["Il mio nuovo cervello, presto!", "plan"],
+  clip: ["Look! That's me at work 🐙", "chat"], vio: ["Which face do you like best?", "love"], team: ["My team: 35 agents!", "ultra-deep"],
+  features: ["Here's everything I can do.", "done"], studio: ["Here I live inside an editor!", "auto-edit"], gallery: ["Real screenshots, no tricks.", "ask"],
+  privacy: ["Your files stay between the two of us.", "done"], install: ["Three steps and we'll meet 😊", "wow"], faq: ["Ask away!", "think"], mycode: ["My new brain, coming soon!", "plan"],
 };
 const secObs = new IntersectionObserver(entries => entries.forEach(e => {
   if (!e.isIntersecting) return;
@@ -1386,30 +1399,30 @@ const secObs = new IntersectionObserver(entries => entries.forEach(e => {
 $$("section[id]").forEach(s => secObs.observe(s));
 guideVio.addEventListener("click", () => scrollTo({ top: 0, behavior: RM ? "auto" : "smooth" }));
 
-// copia il comando
+// copy the command
 $$(".copy").forEach(b => b.addEventListener("click", async () => {
-  try { await navigator.clipboard.writeText(b.dataset.copy); showToast("📋 Copiato: " + b.dataset.copy); } catch { showToast("Scrivi: " + b.dataset.copy); }
+  try { await navigator.clipboard.writeText(b.dataset.copy); showToast("📋 Copied: " + b.dataset.copy); } catch { showToast("Type: " + b.dataset.copy); }
 }));
 
-// MyCode non è ancora pronto
+// MyCode isn't ready yet
 $("#mycodeBtn").addEventListener("click", e => {
-  e.preventDefault(); showToast("🧠 MyCode è ancora in addestramento: arriva presto!");
+  e.preventDefault(); showToast("🧠 MyCode is still in training: coming soon!");
   $("#mycode").scrollIntoView({ behavior: RM ? "auto" : "smooth" });
 });
 
-// sorpresa: scrivi "vio"
+// surprise: type "vio"
 let typed = "";
 addEventListener("keydown", e => {
   if (e.target.closest("input, textarea")) return;
   typed = (typed + e.key.toLowerCase()).slice(-3);
   if (typed !== "vio") return;
   allVios().forEach(s => { const prev = s.dataset.expr; face(s, "love"); setTimeout(() => face(s, prev), 2500); });
-  heroLock = Date.now() + 2500; showToast("💜 Vio ti manda un abbraccio con tutti e otto i tentacoli!");
+  heroLock = Date.now() + 2500; showToast("💜 Vio sends you a hug with all eight tentacles!");
   const box = document.createElement("div"); box.style.cssText = "position:fixed;left:50%;top:50%;width:0;height:0;z-index:25;pointer-events:none"; document.body.appendChild(box);
   confetti(box, 60); setTimeout(() => box.remove(), 1700);
 });
 
-/* ================= cielo di stelle collegate ================= */
+/* ================= sky of connected stars ================= */
 (() => {
   const cv = $("#sky"), ctx = cv.getContext("2d");
   let W, H, pts = [], mouse = { x: -999, y: -999 };

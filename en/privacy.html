@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy · MyDevAgent</title>
+<meta name="description" content="Privacy policy for MyDevAgent and its website: no account, no telemetry, everything on your PC.">
+<meta name="theme-color" content="#07040d">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 8' shape-rendering='crispEdges'%3E%3Crect x='4' width='6' height='1' fill='%23581c87'/%3E%3Crect x='2' y='1' width='10' height='6' fill='%23a855f7'/%3E%3Crect x='4' y='3' width='2' height='2' fill='%231a0b2e'/%3E%3Crect x='8' y='3' width='2' height='2' fill='%231a0b2e'/%3E%3Crect x='1' y='7' width='12' height='1' fill='%23581c87'/%3E%3C/svg%3E">
+<meta property="og:title" content="Privacy · MyDevAgent">
+<meta property="og:url" content="https://mydevagent.github.io/en/privacy.html">
+<meta property="og:image" content="https://mydevagent.github.io/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://mydevagent.github.io/en/privacy.html">
+<link rel="stylesheet" href="legal.css">
+</head>
+<body>
+<nav><div><a class="logo" href="./">My<b>Dev</b>Agent</a><a href="./">← Back to the site</a></div></nav>
+<main>
+  <p class="kicker">Legal</p>
+  <h1>Privacy</h1>
+  <p class="date">Last updated: September 26, 2026</p>
+  <p class="intro">In short: MyDevAgent runs on your PC. It has no accounts and sends no telemetry. We have no servers and never receive your files, your code or your chats.</p>
+
+  <h2>The MyDevAgent program</h2>
+  <p>The AI models run locally with Ollama. Your code, conversations, memory (<code>#note</code>) and stats (<code>/stats</code>) stay in files on your computer. You can delete them whenever you want.</p>
+  <p>MyDevAgent connects to the internet <b>only</b> in these cases:</p>
+  <ul>
+    <li><b>Connection check:</b> an empty request to <code>gstatic.com/generate_204</code> (Google) to find out whether you are online.</li>
+    <li><b>Updates:</b> <code>/update</code> and the notice at startup ask GitHub whether there is anything new.</li>
+    <li><b>Web search and page reading</b>, when you use them: searches go through DuckDuckGo, or through SearXNG, Tavily or Firecrawl if you configured them yourself. Pages are downloaded from the sites you visit.</li>
+    <li><b>Models, plugins and MCP servers</b> that you choose to download or connect: Ollama, GitHub or the addresses you provide.</li>
+  </ul>
+  <p>These services have their own privacy policies and can see your IP address. If you don't use web search and don't update, MyDevAgent works completely offline.</p>
+
+  <h2>Multiplayer</h2>
+  <p>With <code>/multi</code> your session is visible on your local network to anyone who has the room code. Whoever joins sees the conversation and the changes to your files. Only share the code with people you trust.</p>
+
+  <h2>MyDevAgent Studio</h2>
+  <p>Studio is based on VSCodium, which has no Microsoft telemetry. The installer downloads Python, Ollama and MyDevAgent from their official sites.</p>
+
+  <h2>This website</h2>
+  <ul>
+    <li>It uses no cookies, visitor analytics or advertising.</li>
+    <li>It is hosted on <b>GitHub Pages</b>. GitHub may log your IP address for security purposes: see the <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub privacy statement</a>.</li>
+    <li>The fonts come from <b>Google Fonts</b>, which can see your IP address.</li>
+    <li>The download buttons take you to GitHub.</li>
+  </ul>
+
+  <h2>Contact</h2>
+  <p>For privacy questions, open an issue on <a href="https://github.com/giovannisantorofrancesco2011-arch/MyDevAgent/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+
+  <p class="box">See also the <a href="terms.html">Terms</a>.</p>
+</main>
+<footer>© 2026 MyDevAgent · Made with 💜 and eight tentacles · <a href="https://mydevagent.github.io/" hreflang="it" lang="it">Italiano</a></footer>
+</body>
+</html>
