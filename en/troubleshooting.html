@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting · MyDevAgent</title>
+<meta name="description" content="Fixes for the most common MyDevAgent and Studio problems: files not changed, Ollama not running, missing models, updates.">
+<meta name="theme-color" content="#07040d">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 8' shape-rendering='crispEdges'%3E%3Crect x='4' width='6' height='1' fill='%23581c87'/%3E%3Crect x='2' y='1' width='10' height='6' fill='%23a855f7'/%3E%3Crect x='4' y='3' width='2' height='2' fill='%231a0b2e'/%3E%3Crect x='8' y='3' width='2' height='2' fill='%231a0b2e'/%3E%3Crect x='1' y='7' width='12' height='1' fill='%23581c87'/%3E%3C/svg%3E">
+<meta property="og:title" content="Troubleshooting · MyDevAgent">
+<meta property="og:url" content="https://mydevagent.github.io/en/privacy.html">
+<meta property="og:image" content="https://mydevagent.github.io/img/og.png?v=2">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://mydevagent.github.io/en/privacy.html">
+<link rel="stylesheet" href="legal.css">
+</head>
+<body>
+<nav><div><a class="logo" href="./">My<b>Dev</b>Agent</a><a href="./">← Back to the site</a></div></nav>
+<main>
+  <p class="kicker">Help</p>
+  <h1>Troubleshooting</h1>
+  <p class="date">Last updated: September 27, 2026</p>
+  <p class="intro">Something wrong? Here are the most common Vio and Studio problems and how to fix them in a few steps. If yours isn't here, type <code>/doctor</code> in the terminal: it checks models, network and settings and tells you what to fix.</p>
+
+  <h2 id="update-first">First of all: update</h2>
+  <p>Many problems are already fixed in the latest version. In the terminal type <code>/update</code>. In Studio, when there is something new, Vio shows you the <b>Update</b> button (or type <code>/update</code> in the chat). Your models and settings stay.</p>
+
+  <h2 id="vio">Vio</h2>
+  <details id="no-files">
+    <summary>"No files changed: the agent did not apply any changes"</summary>
+    <p>Vio answered but didn't write any file. Try these, in order:</p>
+    <ul>
+      <li><b>Update</b> MyDevAgent. Until September 27, 2026, with Ollama, long requests were cut off and Vio no longer saw what you asked. It happened mostly in Studio.</li>
+      <li>Type <code>/context</code>: if the bar is almost full, type <code>/compact</code> to summarize the conversation, or <code>/clear</code> to start over.</li>
+      <li>Be precise and name the file: "create <code>index.html</code> with…" works better than "make me a website".</li>
+      <li>Check the permissions: in <b>plan</b> mode Vio reads and proposes, but doesn't change anything. Press <b>Shift+Tab</b> to switch.</li>
+      <li>Small models (3B or less) sometimes don't use tools well: if your graphics card allows it, use a bigger profile.</li>
+    </ul>
+  </details>
+  <details id="ollama">
+    <summary>"I can't reach the model server" / "Ollama is not responding"</summary>
+    <p>Ollama is the program that runs the models on your PC. Open it from the Start menu (on a Mac from Applications), or run <code>ollama serve</code> in another terminal. Then try again. In Studio there's the <b>Start Ollama</b> button.</p>
+  </details>
+  <details id="model">
+    <summary>"The model … is not installed"</summary>
+    <p>Download it with <code>/pull model-name</code> (for example <code>/pull qwen2.5-coder:7b</code>). In Studio just press <b>Download the models</b>. <code>/models</code> shows the ones you already have.</p>
+  </details>
+  <details id="slow">
+    <summary>Vio is very slow, or "the model is too slow for this PC"</summary>
+    <ul>
+      <li>Use <code>/fast</code> for simple requests: one agent works instead of a team.</li>
+      <li>Pick a profile that fits your graphics card: <code>cpu</code> if you don't have one, <code>gpu8</code> for 8 GB, and so on.</li>
+      <li>Close heavy programs (games, other models): Vio needs the graphics card's memory.</li>
+    </ul>
+  </details>
+  <details id="memory">
+    <summary>"The model does not fit in memory"</summary>
+    <p>The model is too big for your RAM or graphics card. Close other programs, or use a smaller profile (<code>mydevagent -p cpu</code> or <code>-p gpu8</code>).</p>
+  </details>
+  <details id="moved">
+    <summary>I moved or renamed the MyDevAgent folder and it no longer starts</summary>
+    <p>Start it with <code>run.bat</code>: it notices the folder changed and repairs itself. If that's not enough, delete the <code>.venv</code> folder inside MyDevAgent and run <code>run.bat</code> again: it reinstalls everything (once).</p>
+  </details>
+  <details id="update">
+    <summary><code>/update</code> doesn't work</summary>
+    <ul>
+      <li>"not a git copy": you downloaded MyDevAgent as a zip. Follow "Updating" in the README to connect it to GitHub, or download it again with git.</li>
+      <li>"you have local changes": you changed files inside the MyDevAgent folder. Run <code>git stash</code> in that folder and try again.</li>
+      <li>"GitHub is not responding": check your connection and try again in a bit.</li>
+    </ul>
+  </details>
+
+  <h2 id="studio">MyDevAgent Studio</h2>
+  <details id="not-found">
+    <summary>"I can't find MyDevAgent"</summary>
+    <p>Studio looks for MyDevAgent on the Desktop, in Documents and in your user folder. If you put it somewhere else, press <b>I already have it: choose the folder</b> and pick the one with <code>.venv</code> inside. If you don't have it yet, press <b>Install MyDevAgent</b>: it downloads Python, Ollama, MyDevAgent and the models.</p>
+  </details>
+  <details id="copy">
+    <summary>It works in the terminal but not in Studio</summary>
+    <p>At startup Vio writes in the chat which MyDevAgent it is using (folder and version). If it's a different copy from the one you use in the terminal, pick the right one with the <b>MyDevAgent: Path</b> setting, or update that copy with the <b>Update</b> button.</p>
+  </details>
+  <details id="trust">
+    <summary>Vio says "this folder is not trusted yet"</summary>
+    <p>Studio opens new folders in restricted mode: until you trust it, Vio doesn't read, change or run anything. Press <b>I trust this folder</b> if the project is yours or comes from someone you trust.</p>
+  </details>
+  <details id="closed">
+    <summary>"MyDevAgent closed"</summary>
+    <p>Press <b>Restart</b>. If it happens again, press <b>Show the log</b>: the last lines say what happened. Often updating MyDevAgent or starting Ollama is enough.</p>
+  </details>
+
+  <p class="box">Didn't find the fix? Open an issue on <a href="https://github.com/giovannisantorofrancesco2011-arch/EN-MyDevAgent/issues" target="_blank" rel="noopener">GitHub</a> with a screenshot and the output of <code>/doctor</code>.</p>
+</main>
+<footer>© 2026 MyDevAgent · Made with 💜 and eight tentacles · <a href="https://mydevagent.github.io/" hreflang="it" lang="it">Italiano</a></footer>
+</body>
+</html>

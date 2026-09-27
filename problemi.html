@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Problemi comuni · MyDevAgent</title>
+<meta name="description" content="Le soluzioni ai problemi più comuni di MyDevAgent e dello Studio: file non modificati, Ollama spento, modelli mancanti, aggiornamenti.">
+<meta name="theme-color" content="#07040d">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 8' shape-rendering='crispEdges'%3E%3Crect x='4' width='6' height='1' fill='%23581c87'/%3E%3Crect x='2' y='1' width='10' height='6' fill='%23a855f7'/%3E%3Crect x='4' y='3' width='2' height='2' fill='%231a0b2e'/%3E%3Crect x='8' y='3' width='2' height='2' fill='%231a0b2e'/%3E%3Crect x='1' y='7' width='12' height='1' fill='%23581c87'/%3E%3C/svg%3E">
+<meta property="og:title" content="Problemi comuni · MyDevAgent">
+<meta property="og:image" content="https://mydevagent.github.io/img/og.png?v=2">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="legal.css">
+</head>
+<body>
+<nav><div><a class="logo" href="./">My<b>Dev</b>Agent</a><a href="./">← Torna al sito</a></div></nav>
+<main>
+  <p class="kicker">Aiuto</p>
+  <h1>Problemi comuni</h1>
+  <p class="date">Ultimo aggiornamento: 27 settembre 2026</p>
+  <p class="intro">Qualcosa non va? Qui trovi i problemi più frequenti di Vio e dello Studio, e come risolverli in pochi passi. Se il tuo non c'è, scrivi <code>/doctor</code> nel terminale: controlla modelli, rete e impostazioni e ti dice cosa sistemare.</p>
+
+  <h2 id="aggiornare">Prima di tutto: aggiorna</h2>
+  <p>Molti problemi sono già risolti nell'ultima versione. Nel terminale scrivi <code>/update</code>. Nello Studio, quando c'è una novità, Vio ti mostra il pulsante <b>Aggiorna</b> (oppure scrivi <code>/update</code> nella chat). I tuoi modelli e le impostazioni restano.</p>
+
+  <h2 id="vio">Vio</h2>
+  <details id="nessun-file">
+    <summary>«Nessun file modificato: l'agente non ha applicato modifiche»</summary>
+    <p>Vio ha risposto ma non ha scritto nessun file. Prova così, in ordine:</p>
+    <ul>
+      <li><b>Aggiorna</b> MyDevAgent. Fino al 27 settembre 2026, con Ollama, le richieste lunghe venivano tagliate e Vio non vedeva più cosa gli avevi chiesto. Succedeva soprattutto nello Studio.</li>
+      <li>Scrivi <code>/context</code>: se la barra è quasi piena, scrivi <code>/compact</code> per riassumere la conversazione, oppure <code>/clear</code> per ricominciare.</li>
+      <li>Chiedi in modo preciso, con il nome del file: «crea <code>index.html</code> con…» funziona meglio di «fammi un sito».</li>
+      <li>Controlla i permessi: in modalità <b>plan</b> Vio legge e propone, ma non modifica niente. Premi <b>Maiusc+Tab</b> per cambiare.</li>
+      <li>I modelli piccoli (3B o meno) a volte non usano bene gli strumenti: se la tua scheda video lo permette, usa un profilo più grande.</li>
+    </ul>
+  </details>
+  <details id="ollama">
+    <summary>«Non riesco a contattare il server dei modelli» / «Ollama non risponde»</summary>
+    <p>Ollama è il programma che fa girare i modelli sul tuo PC. Aprilo dal menu Start (su Mac dalle Applicazioni), oppure scrivi <code>ollama serve</code> in un altro terminale. Poi riprova. Nello Studio c'è il pulsante <b>Avvia Ollama</b>.</p>
+  </details>
+  <details id="modello">
+    <summary>«Il modello … non è installato»</summary>
+    <p>Scaricalo con <code>/pull nome-del-modello</code> (per esempio <code>/pull qwen2.5-coder:7b</code>). Nello Studio basta il pulsante <b>Scarica i modelli</b>. Con <code>/models</code> vedi quelli che hai già.</p>
+  </details>
+  <details id="lento">
+    <summary>Vio è lentissimo, o «il modello è troppo lento per questo PC»</summary>
+    <ul>
+      <li>Usa <code>/fast</code> per le richieste semplici: lavora un agente solo invece di un team.</li>
+      <li>Scegli un profilo adatto alla tua scheda video: <code>cpu</code> se non ce l'hai, <code>gpu8</code> per 8 GB, e così via.</li>
+      <li>Chiudi i programmi pesanti (giochi, altri modelli): la memoria della scheda video serve a Vio.</li>
+    </ul>
+  </details>
+  <details id="memoria">
+    <summary>«Il modello non entra in memoria»</summary>
+    <p>Il modello è troppo grande per la tua RAM o scheda video. Chiudi altri programmi, oppure usa un profilo più piccolo (<code>mydevagent -p cpu</code> o <code>-p gpu8</code>).</p>
+  </details>
+  <details id="spostata">
+    <summary>Ho spostato o rinominato la cartella di MyDevAgent e non parte più</summary>
+    <p>Avvialo con <code>run.bat</code>: si accorge che la cartella è cambiata e si ripara da solo. Se non basta, cancella la cartella <code>.venv</code> dentro MyDevAgent e lancia di nuovo <code>run.bat</code>: reinstalla tutto (una volta sola).</p>
+  </details>
+  <details id="update">
+    <summary><code>/update</code> non funziona</summary>
+    <ul>
+      <li>«non è una copia git»: hai scaricato MyDevAgent come zip. Segui «Aggiornare» nel README per collegarlo a GitHub, oppure scaricalo di nuovo con git.</li>
+      <li>«hai modifiche locali»: hai cambiato dei file dentro la cartella di MyDevAgent. Scrivi <code>git stash</code> in quella cartella e riprova.</li>
+      <li>«GitHub non risponde»: controlla la connessione e riprova tra poco.</li>
+    </ul>
+  </details>
+
+  <h2 id="studio">MyDevAgent Studio</h2>
+  <details id="non-trovo">
+    <summary>«Non trovo MyDevAgent»</summary>
+    <p>Lo Studio cerca MyDevAgent sul Desktop, nei Documenti e nella cartella utente. Se l'hai messo altrove, premi <b>Ce l'ho già: scegli la cartella</b> e scegli quella con dentro <code>.venv</code>. Se non l'hai ancora, premi <b>Installa MyDevAgent</b>: scarica Python, Ollama, MyDevAgent e i modelli.</p>
+  </details>
+  <details id="copia">
+    <summary>Nel terminale funziona, nello Studio no</summary>
+    <p>All'avvio Vio scrive nella chat quale MyDevAgent sta usando (cartella e versione). Se è una copia diversa da quella che usi nel terminale, scegli quella giusta con l'impostazione <b>MyDevAgent: Percorso</b>, oppure aggiorna la copia con il pulsante <b>Aggiorna</b>.</p>
+  </details>
+  <details id="fidata">
+    <summary>Vio dice «questa cartella non è ancora fidata»</summary>
+    <p>Lo Studio apre le cartelle nuove in modalità protetta: finché non ti fidi, Vio non legge, non modifica e non lancia niente. Premi <b>Mi fido di questa cartella</b> se il progetto è tuo o viene da qualcuno di cui ti fidi.</p>
+  </details>
+  <details id="chiuso">
+    <summary>«MyDevAgent si è chiuso»</summary>
+    <p>Premi <b>Riavvia</b>. Se ricapita, premi <b>Mostra il registro</b>: le ultime righe dicono cosa è successo. Spesso basta aggiornare MyDevAgent o avviare Ollama.</p>
+  </details>
+
+  <p class="box">Non hai trovato la soluzione? Apri una segnalazione su <a href="https://github.com/giovannisantorofrancesco2011-arch/MyDevAgent/issues" target="_blank" rel="noopener">GitHub</a> con uno screenshot e il risultato di <code>/doctor</code>.</p>
+</main>
+<footer>© 2026 MyDevAgent · Fatto con 💜 e otto tentacoli</footer>
+</body>
+</html>

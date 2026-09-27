@@ -23,3 +23,11 @@ b { color: var(--text); font-weight: 600; }
 code { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 13px; background: #1a1029; border: 1px solid var(--line); padding: 1px 6px; border-radius: 6px; color: var(--lilac); }
 .box { margin-top: 28px; padding: 18px 20px; border-radius: 14px; border: 1px solid var(--line); background: rgba(24, 14, 40, .65); }
 footer { border-top: 1px solid var(--line); padding: 26px 20px; text-align: center; font-size: 13px; color: var(--dim); }
+details { margin-top: 12px; border: 1px solid var(--line); border-radius: 12px; background: rgba(24, 14, 40, .55); }
+details[open] { border-color: rgba(168, 85, 247, .5); }
+summary { cursor: pointer; padding: 14px 18px; font-weight: 600; color: var(--text); list-style: none; display: flex; gap: 10px; }
+summary::-webkit-details-marker { display: none; }
+summary::before { content: "›"; color: var(--purple); font-weight: 800; transition: transform .15s; }
+details[open] summary::before { transform: rotate(90deg); }
+details > p, details > ul { margin: 0 18px 16px; }
+details > ul { margin-left: 38px; }
