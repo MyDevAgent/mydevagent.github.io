@@ -3,3 +3,5 @@
 Sito di [MyDevAgent](https://github.com/giovannisantorofrancesco2011-arch/MyDevAgent), online su https://mydevagent.github.io.
 
 Il sorgente vive sul ramo `sito` del repo MyDevAgent: le modifiche si fanno lì e poi si copiano qui.
+
+© 2026 gio. Tutti i diritti riservati: il sito, i testi, le immagini e il personaggio Vio non si possono copiare.
