@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prezzi · MyDevAgent</title>
+<meta name="description" content="Prezzi di MyDevAgent: prova gratis per 14 giorni, poi abbonamento o acquisto una volta. Base o Plus.">
+<meta name="theme-color" content="#07040d">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 8' shape-rendering='crispEdges'%3E%3Crect x='4' width='6' height='1' fill='%23581c87'/%3E%3Crect x='2' y='1' width='10' height='6' fill='%23a855f7'/%3E%3Crect x='4' y='3' width='2' height='2' fill='%231a0b2e'/%3E%3Crect x='8' y='3' width='2' height='2' fill='%231a0b2e'/%3E%3Crect x='1' y='7' width='12' height='1' fill='%23581c87'/%3E%3C/svg%3E">
+<meta property="og:title" content="Prezzi · MyDevAgent">
+<meta property="og:image" content="https://mydevagent.github.io/img/og.png?v=2">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="legal.css">
+<style>
+  .plans { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
+  .plan { padding: 22px; border-radius: 16px; border: 1px solid var(--line); background: rgba(24, 14, 40, .65); display: flex; flex-direction: column; gap: 12px; }
+  .plan.plus { border-color: rgba(168, 85, 247, .7); box-shadow: 0 0 40px rgba(168, 85, 247, .18); }
+  .plan h2 { margin: 0; }
+  .plan ul { margin-top: 0; }
+  .price { font-size: 30px; font-weight: 800; color: var(--text); letter-spacing: -.02em; }
+  .price small { font-size: 15px; font-weight: 500; color: var(--muted); }
+  .or { color: var(--dim); font-size: 14px; }
+  .buy { display: block; text-align: center; padding: 11px 14px; border-radius: 999px; font-weight: 700; text-decoration: none; color: #fff; background: linear-gradient(135deg, #9333ea, #c026d3); }
+  .buy.ghost { background: none; border: 1px solid var(--line); color: var(--lilac); }
+  .buy:hover { filter: brightness(1.12); }
+  ol { margin: 10px 0 0 20px; display: grid; gap: 8px; }
+  ol li::marker { color: var(--purple); font-weight: 700; }
+  @media (max-width: 640px) { .plans { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<nav><div><a class="logo" href="./">My<b>Dev</b>Agent</a><a href="./">← Torna al sito</a></div></nav>
+<main>
+  <p class="kicker">Licenza</p>
+  <h1>Acquista MyDevAgent</h1>
+  <p class="date">Prova gratis per 14 giorni, poi scegli tu</p>
+  <p class="intro">MyDevAgent gira sul tuo PC con i tuoi modelli: niente token da pagare. Dopo i 14 giorni di prova serve un codice di licenza. Lo paghi una volta sola o al mese, e ti arriva per email in automatico.</p>
+
+  <div class="plans">
+    <section class="plan">
+      <h2>Base</h2>
+      <ul>
+        <li>MyDevAgent nel terminale</li>
+        <li>MyDevAgent Studio</li>
+        <li>Tutti gli agenti, skill, plugin, MCP</li>
+      </ul>
+      <p class="price">4,99 € <small>al mese</small></p>
+      <a class="buy ghost" href="https://www.paypal.com/paypalme/GiovanniSantoro428/4.99EUR" target="_blank" rel="noopener">Abbonamento mensile</a>
+      <p class="or">oppure <b>39 €</b> una volta, per sempre</p>
+      <a class="buy" href="https://www.paypal.com/paypalme/GiovanniSantoro428/39EUR" target="_blank" rel="noopener">Compra per sempre</a>
+    </section>
+    <section class="plan plus">
+      <h2>Plus</h2>
+      <ul>
+        <li>Tutto quello che c'è nel Base</li>
+        <li><code>/revisione</code> prima del commit</li>
+        <li><code>/debug</code> guidato e <code>/test</code> scritti da Vio</li>
+        <li><code>/sfondo</code>: lavori in sottofondo</li>
+        <li>Memoria automatica del progetto</li>
+      </ul>
+      <p class="price">9,99 € <small>al mese</small></p>
+      <a class="buy ghost" href="https://www.paypal.com/paypalme/GiovanniSantoro428/9.99EUR" target="_blank" rel="noopener">Abbonamento Plus mensile</a>
+      <p class="or">oppure <b>79 €</b> una volta, per sempre</p>
+      <a class="buy" href="https://www.paypal.com/paypalme/GiovanniSantoro428/79EUR" target="_blank" rel="noopener">Compra Plus per sempre</a>
+    </section>
+  </div>
+
+  <h2 id="come">Come si compra</h2>
+  <ol>
+    <li>Premi il pulsante del piano che vuoi: si apre PayPal con l'importo già scritto. <b>Non cambiarlo</b>: è l'importo che dice quale piano hai scelto.</li>
+    <li>Scegli <b>«Beni e servizi»</b> (ti protegge PayPal se qualcosa va storto).</li>
+    <li>Nella <b>nota del pagamento scrivi la tua email</b>: è lì che ti mandiamo il codice.</li>
+    <li>Entro circa 15 minuti ti arriva un'email con il codice <code>MDA-…</code>.</li>
+    <li>Apri MyDevAgent, o la chat dello Studio, e scrivi <code>/licenza</code> seguito dal codice.</li>
+  </ol>
+
+  <h2>Domande</h2>
+  <details>
+    <summary>L'abbonamento si rinnova da solo?</summary>
+    <p>No. Il codice mensile vale 31 giorni. Quando scade, Vio te lo dice: paghi di nuovo dal pulsante e ti arriva un codice nuovo. Niente addebiti a sorpresa.</p>
+  </details>
+  <details>
+    <summary>Il codice non è arrivato</summary>
+    <p>Aspetta 15 minuti e controlla anche lo spam. Se non c'è, forse la nota del pagamento non conteneva l'email: rispondi all'email di conferma di PayPal o scrivici, e te lo mandiamo a mano.</p>
+  </details>
+  <details>
+    <summary>Posso usarlo su più computer?</summary>
+    <p>Sì, sui tuoi computer. Il codice è personale: non passarlo ad altri.</p>
+  </details>
+  <details>
+    <summary>Cosa succede se non compro?</summary>
+    <p>Dopo i 14 giorni di prova Vio non accetta più richieste finché non inserisci un codice. I tuoi progetti e i file restano tutti tuoi, sul tuo PC.</p>
+  </details>
+
+  <p class="box">I pagamenti passano da PayPal: MyDevAgent non vede né salva i dati della tua carta. Leggi anche i <a href="termini.html#licenze">termini</a>.</p>
+</main>
+<footer>© 2026 MyDevAgent · Fatto con 💜 e otto tentacoli</footer>
+</body>
+</html>

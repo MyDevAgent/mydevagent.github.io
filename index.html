@@ -6,7 +6,7 @@
 <title>MyDevAgent · il tuo team di agenti AI, sul tuo PC</title>
 <meta name="description" content="MyDevAgent: assistente di programmazione local-first con 35 agenti specializzati e Vio, il polpetto viola. Gira offline sul tuo PC con Ollama.">
 <meta property="og:title" content="MyDevAgent · 35 agenti AI sul tuo PC">
-<meta property="og:description" content="Legge il tuo progetto, scrive il codice, lancia i test e si corregge da solo. Gratis, offline, sul tuo PC.">
+<meta property="og:description" content="Legge il tuo progetto, scrive il codice, lancia i test e si corregge da solo. Offline, sul tuo PC. Provalo gratis per 14 giorni.">
 <meta name="theme-color" content="#07040d">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="MyDevAgent">
@@ -90,6 +90,10 @@
   nav ul a.on::after { transform: scaleX(1); }
   .gh { border: 1px solid var(--line); padding: 7px 14px; border-radius: 999px; font-size: 14px; transition: .25s; white-space: nowrap; }
   .gh:hover { border-color: var(--purple); box-shadow: 0 0 20px rgba(168,85,247,.35); }
+  .navr { display: flex; gap: 10px; }
+  .buy { padding: 7px 14px; border-radius: 999px; font-size: 14px; font-weight: 700; color: #fff; white-space: nowrap; background: linear-gradient(135deg, #9333ea, #c026d3); transition: .25s; }
+  .buy:hover { box-shadow: 0 0 20px rgba(192,38,211,.5); }
+  @media (max-width: 520px) { .gh { display: none; } }
 
   /* hero */
   .hero { padding: 70px 0 40px; text-align: center; }
@@ -557,13 +561,16 @@
       <li><a href="#installa">Installa</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
-    <a class="gh" href="https://github.com/giovannisantorofrancesco2011-arch/MyDevAgent" target="_blank" rel="noopener">★ GitHub</a>
+    <div class="navr">
+      <a class="buy" href="prezzi.html">Acquista licenza</a>
+      <a class="gh" href="https://github.com/giovannisantorofrancesco2011-arch/MyDevAgent" target="_blank" rel="noopener">★ GitHub</a>
+    </div>
   </div>
 </nav>
 
 <header class="hero">
   <div class="wrap">
-    <span class="pill reveal"><i></i> Gratis · niente cloud · funziona offline</span>
+    <span class="pill reveal"><i></i> Prova gratis 14 giorni · niente cloud · funziona offline</span>
     <div class="vio-stage">
       <svg class="vio vio-hero" id="vioHero" data-expr="ask" role="img" aria-label="Vio, il polpetto viola di MyDevAgent. Cliccalo!"></svg>
       <div class="vio-shadow"></div>
@@ -680,7 +687,7 @@
     <div class="center reveal">
       <p class="kicker">Funzioni</p>
       <h2>Tutto quello che fa un assistente di coding.<br><span class="grad">Ma a casa tua.</span></h2>
-      <p class="sub">Le idee migliori di Claude Code, Cursor e Aider, in un solo programma gratuito che gira anche senza internet.</p>
+      <p class="sub">Le idee migliori di Claude Code, Cursor e Aider, in un solo programma che gira anche senza internet.</p>
     </div>
 
     <div class="stats">
@@ -806,7 +813,7 @@
       <h2>Domande frequenti</h2>
     </div>
     <div class="faq reveal">
-      <details><summary>È davvero gratis?</summary><p>Sì. MyDevAgent si scarica e si usa gratis e i modelli girano sul tuo PC, quindi non paghi nessun abbonamento e nessun token.</p></details>
+      <details><summary>Quanto costa?</summary><p>Lo provi gratis per 14 giorni. Poi serve una licenza: 4,99 € al mese oppure 39 € una volta per sempre (Plus: 9,99 € o 79 €). I modelli girano sul tuo PC, quindi non paghi nessun token. Tutti i dettagli nella pagina <a href="prezzi.html">prezzi</a>.</p></details>
       <details><summary>Serve internet?</summary><p>Solo per scaricare Ollama e i modelli la prima volta. Dopo funziona offline. Se sei online può anche cercare documentazione sul web.</p></details>
       <details><summary>Che differenza c'è tra lo zip e lo Studio?</summary><p>Lo zip ti dà MyDevAgent nel terminale, per Windows, Linux e macOS. Lo Studio è un editor completo per Windows con Vio nella barra laterale, e installa da solo Python, Ollama e MyDevAgent.</p></details>
       <details><summary>Può rovinare i miei file?</summary><p>Nella modalità <code>ask</code> ti chiede conferma prima di ogni modifica e ti mostra il diff. Se qualcosa non ti piace, <code>/undo</code> torna indietro. Con <code>plan</code> legge e basta.</p></details>
@@ -842,6 +849,7 @@
         <h4>Prodotto</h4>
         <ul>
           <li><a href="#scarica">Scarica</a></li>
+          <li><a href="prezzi.html">Acquista licenza</a></li>
           <li><a href="#funzioni">Funzioni</a></li>
           <li><a href="#studio">Studio per Windows</a></li>
           <li><a href="#installa">Installa</a></li>
