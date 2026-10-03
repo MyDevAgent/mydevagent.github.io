@@ -6,7 +6,7 @@
 <title>MyDevAgent · your team of AI agents, on your PC</title>
 <meta name="description" content="MyDevAgent: a local-first coding assistant with 35 specialized agents and Vio, the little purple octopus. Runs offline on your PC with Ollama.">
 <meta property="og:title" content="MyDevAgent · 35 AI agents on your PC">
-<meta property="og:description" content="It reads your project, writes the code, runs the tests and fixes its own mistakes. Free, offline, on your PC.">
+<meta property="og:description" content="It reads your project, writes the code, runs the tests and fixes its own mistakes. Offline, on your PC. Try it free for 14 days.">
 <meta name="theme-color" content="#07040d">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="MyDevAgent">
@@ -97,6 +97,9 @@
   .nav-r { display: flex; align-items: center; gap: 14px; }
   .lang { font-size: 14px; color: var(--muted); white-space: nowrap; transition: color .2s; }
   .lang:hover { color: var(--text); }
+  .buy { padding: 7px 14px; border-radius: 999px; font-size: 14px; font-weight: 700; color: #fff; white-space: nowrap; background: linear-gradient(135deg, #9333ea, #c026d3); transition: .25s; }
+  .buy:hover { box-shadow: 0 0 20px rgba(192,38,211,.5); }
+  @media (max-width: 520px) { .gh { display: none; } }
 
   /* hero */
   .hero { padding: 70px 0 40px; text-align: center; }
@@ -565,6 +568,7 @@
       <li><a href="#faq">FAQ</a></li>
     </ul>
     <div class="nav-r">
+      <a class="buy" href="pricing.html">Buy license</a>
       <a class="lang" href="https://mydevagent.github.io/" hreflang="it" lang="it" title="Versione italiana">Italiano</a>
       <a class="gh" href="https://github.com/giovannisantorofrancesco2011-arch/EN-MyDevAgent" target="_blank" rel="noopener">★ GitHub</a>
     </div>
@@ -573,7 +577,7 @@
 
 <header class="hero">
   <div class="wrap">
-    <span class="pill reveal"><i></i> Free · no cloud · works offline</span>
+    <span class="pill reveal"><i></i> Free 14-day trial · no cloud · works offline</span>
     <div class="vio-stage">
       <svg class="vio vio-hero" id="vioHero" data-expr="ask" role="img" aria-label="Vio, the little purple octopus of MyDevAgent. Click it!"></svg>
       <div class="vio-shadow"></div>
@@ -690,7 +694,7 @@
     <div class="center reveal">
       <p class="kicker">Features</p>
       <h2>Everything a coding assistant does.<br><span class="grad">But at your place.</span></h2>
-      <p class="sub">The best ideas from Claude Code, Cursor and Aider, in a single free program that runs even without internet.</p>
+      <p class="sub">The best ideas from Claude Code, Cursor and Aider, in a single program that runs even without internet.</p>
     </div>
 
     <div class="stats">
@@ -817,7 +821,7 @@
       <h2>Frequently asked questions</h2>
     </div>
     <div class="faq reveal">
-      <details><summary>Is it really free?</summary><p>Yes. MyDevAgent is free to download and use, and the models run on your PC, so you pay no subscription and no tokens.</p></details>
+      <details><summary>How much does it cost?</summary><p>You try it free for 14 days. Then you need a license: €4.99 a month or €39 once, forever (Plus: €9.99 or €79). The models run on your PC, so you pay no tokens. All the details are on the <a href="pricing.html">pricing</a> page.</p></details>
       <details><summary>Do I need internet?</summary><p>Only to download Ollama and the models the first time. After that it works offline. When you're online it can also search the web for documentation.</p></details>
       <details><summary>What's the difference between the zip and Studio?</summary><p>The zip gives you MyDevAgent in the terminal, for Windows, Linux and macOS. Studio is a full editor for Windows with Vio in the sidebar, and it installs Python, Ollama and MyDevAgent by itself.</p></details>
       <details><summary>Can it mess up my files?</summary><p>In <code>ask</code> mode it asks you before every change and shows you the diff. If you don't like something, <code>/undo</code> takes you back. In <code>plan</code> mode it only reads.</p></details>
@@ -854,6 +858,7 @@
         <h4>Product</h4>
         <ul>
           <li><a href="#download">Download</a></li>
+          <li><a href="pricing.html">Buy license</a></li>
           <li><a href="#features">Features</a></li>
           <li><a href="#studio">Studio for Windows</a></li>
           <li><a href="#install">Install</a></li>

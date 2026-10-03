@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pricing · MyDevAgent</title>
+<meta name="description" content="MyDevAgent pricing: free 14-day trial, then a subscription or a one-time purchase. Base or Plus.">
+<meta name="theme-color" content="#07040d">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 8' shape-rendering='crispEdges'%3E%3Crect x='4' width='6' height='1' fill='%23581c87'/%3E%3Crect x='2' y='1' width='10' height='6' fill='%23a855f7'/%3E%3Crect x='4' y='3' width='2' height='2' fill='%231a0b2e'/%3E%3Crect x='8' y='3' width='2' height='2' fill='%231a0b2e'/%3E%3Crect x='1' y='7' width='12' height='1' fill='%23581c87'/%3E%3C/svg%3E">
+<meta property="og:title" content="Pricing · MyDevAgent">
+<meta property="og:image" content="https://mydevagent.github.io/img/og.png?v=2">
+<meta property="og:url" content="https://mydevagent.github.io/en/pricing.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://mydevagent.github.io/en/pricing.html">
+<link rel="alternate" hreflang="it" href="https://mydevagent.github.io/prezzi.html">
+<link rel="stylesheet" href="legal.css">
+<style>
+  .plans { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
+  .plan { padding: 22px; border-radius: 16px; border: 1px solid var(--line); background: rgba(24, 14, 40, .65); display: flex; flex-direction: column; gap: 12px; }
+  .plan.plus { border-color: rgba(168, 85, 247, .7); box-shadow: 0 0 40px rgba(168, 85, 247, .18); }
+  .plan h2 { margin: 0; }
+  .plan ul { margin-top: 0; }
+  .price { font-size: 30px; font-weight: 800; color: var(--text); letter-spacing: -.02em; }
+  .price small { font-size: 15px; font-weight: 500; color: var(--muted); }
+  .or { color: var(--dim); font-size: 14px; }
+  .buy { display: block; text-align: center; padding: 11px 14px; border-radius: 999px; font-weight: 700; text-decoration: none; color: #fff; background: linear-gradient(135deg, #9333ea, #c026d3); }
+  .buy.ghost { background: none; border: 1px solid var(--line); color: var(--lilac); }
+  .buy:hover { filter: brightness(1.12); }
+  ol { margin: 10px 0 0 20px; display: grid; gap: 8px; }
+  ol li::marker { color: var(--purple); font-weight: 700; }
+  @media (max-width: 640px) { .plans { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<nav><div><a class="logo" href="./">My<b>Dev</b>Agent</a><a href="./">← Back to the site</a></div></nav>
+<main>
+  <p class="kicker">License</p>
+  <h1>Buy MyDevAgent</h1>
+  <p class="date">Try it free for 14 days, then you choose</p>
+  <p class="intro">MyDevAgent runs on your PC with your own models: no tokens to pay for. After the 14-day trial you need a license code. Pay once or monthly, and the code reaches you by email automatically.</p>
+
+  <div class="plans">
+    <section class="plan">
+      <h2>Base</h2>
+      <ul>
+        <li>MyDevAgent in the terminal</li>
+        <li>MyDevAgent Studio</li>
+        <li>All agents, skills, plugins, MCP</li>
+      </ul>
+      <p class="price">€4.99 <small>per month</small></p>
+      <a class="buy ghost" href="https://www.paypal.com/paypalme/GiovanniSantoro428/4.99EUR" target="_blank" rel="noopener">Monthly subscription</a>
+      <p class="or">or <b>€39</b> once, forever</p>
+      <a class="buy" href="https://www.paypal.com/paypalme/GiovanniSantoro428/39EUR" target="_blank" rel="noopener">Buy forever</a>
+    </section>
+    <section class="plan plus">
+      <h2>Plus</h2>
+      <ul>
+        <li>Everything in Base</li>
+        <li><code>/review-changes</code> before you commit</li>
+        <li>Guided <code>/debug</code> and <code>/test</code> written by Vio</li>
+        <li><code>/background</code>: jobs that run while you work</li>
+        <li>Automatic project memory</li>
+      </ul>
+      <p class="price">€9.99 <small>per month</small></p>
+      <a class="buy ghost" href="https://www.paypal.com/paypalme/GiovanniSantoro428/9.99EUR" target="_blank" rel="noopener">Monthly Plus subscription</a>
+      <p class="or">or <b>€79</b> once, forever</p>
+      <a class="buy" href="https://www.paypal.com/paypalme/GiovanniSantoro428/79EUR" target="_blank" rel="noopener">Buy Plus forever</a>
+    </section>
+  </div>
+
+  <h2 id="how">How to buy</h2>
+  <ol>
+    <li>Press the button of the plan you want: PayPal opens with the amount already filled in. <b>Don't change it</b>: the amount tells us which plan you picked.</li>
+    <li>Choose <b>"Goods and services"</b> (PayPal protects you if something goes wrong).</li>
+    <li><b>Write your email in the payment note</b>: that's where we send the code.</li>
+    <li>Within about 15 minutes you get an email with your <code>MDA-…</code> code.</li>
+    <li>Open MyDevAgent, or the Studio chat, and type <code>/license</code> followed by the code.</li>
+  </ol>
+
+  <h2>Questions</h2>
+  <details>
+    <summary>Does the subscription renew by itself?</summary>
+    <p>No. A monthly code lasts 31 days. When it runs out, Vio tells you: pay again from the button and you get a new code. No surprise charges.</p>
+  </details>
+  <details>
+    <summary>My code didn't arrive</summary>
+    <p>Wait 15 minutes and check your spam folder too. If it isn't there, maybe the payment note didn't contain your email: reply to PayPal's confirmation email or write to us, and we'll send it by hand.</p>
+  </details>
+  <details>
+    <summary>Can I use it on more than one computer?</summary>
+    <p>Yes, on your own computers. The code is personal: don't pass it on to others.</p>
+  </details>
+  <details>
+    <summary>What happens if I don't buy?</summary>
+    <p>After the 14-day trial Vio stops taking requests until you enter a code. Your projects and files stay yours, on your PC.</p>
+  </details>
+
+  <p class="box">Payments go through PayPal: MyDevAgent never sees or stores your card details. See also the <a href="terms.html#licenses">terms</a>. Prices are in euros; PayPal converts them for you.</p>
+</main>
+<footer>© 2026 MyDevAgent · Made with 💜 and eight tentacles · <a href="https://mydevagent.github.io/prezzi.html" hreflang="it" lang="it">Italiano</a></footer>
+</body>
+</html>
